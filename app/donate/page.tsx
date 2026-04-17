@@ -42,7 +42,7 @@ export default function DonatePage() {
           </h2>
 
           <Image
-            src="/images/qr.png"   // 👉 apna QR code yaha daalo
+            src="/images/QR.jpg"   // 👉 apna QR code yaha daalo
             alt="QR Code"
             width={200}
             height={200}
