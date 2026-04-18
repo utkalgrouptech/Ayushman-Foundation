@@ -13,8 +13,8 @@ export function Navigation() {
     { href: "/about", label: "About Us" },
     { href: "/programs", label: "Programs" },
     { href: "/blog", label: "Blog" },
-         { href: "/membership", label: "Become A Member" },
     { href: "/gallery", label: "Gallery" },
+        { href: "/membership", label: "Become A Member" },
 
   ]
 
