@@ -13,8 +13,9 @@ export function Navigation() {
     { href: "/about", label: "About Us" },
     { href: "/programs", label: "Programs" },
     { href: "/blog", label: "Blog" },
-    { href: "/contact", label: "Contact" },
-    { href: "/donate", label: "Donate" },
+         { href: "/membership", label: "Become A Member" },
+    { href: "/gallery", label: "Gallery" },
+
   ]
 
   return (
