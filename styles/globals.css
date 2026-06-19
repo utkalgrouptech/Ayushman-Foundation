@@ -121,3 +121,32 @@
     @apply bg-background text-foreground;
   }
 }
+@font-face {
+  font-family: "Quotes Caps";
+  src: url("/fonts/QuotesCaps.ttf") format("truetype");
+}
+
+
+@keyframes testimonialScroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-342px * 3));
+  }
+}
+
+@keyframes testimonialScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-testimonial-scroll {
+  animation: testimonialScroll 25s linear infinite;
+}

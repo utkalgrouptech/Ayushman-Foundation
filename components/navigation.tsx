@@ -14,8 +14,10 @@ export function Navigation() {
     { href: "/programs", label: "Programs" },
     { href: "/blog", label: "Blog" },
     { href: "/gallery", label: "Gallery" },
-        { href: "/membership", label: "Become A Member" },
+     { href: "/", label: "Report" },
 
+        { href: "/membership", label: "Become A Member" },
+           
   ]
 
   return (

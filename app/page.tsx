@@ -1,3 +1,4 @@
+"use client";
 import { AnimatedCounter } from "@/components/animated-counter"
 import { FadeInSection } from "@/components/fade-in-section"
 import { TestimonialCard } from "@/components/ui/testimonial-card"
@@ -23,8 +24,16 @@ import {
   Eye,
   Activity,
   BookOpen,
+ 
+    Briefcase,
+  HeartPulse,
+  
+  Building2,
 } from "lucide-react"
 import Link from "next/link"
+import { useEffect, useState } from "react"
+import { Leaf } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion"
 
 const iconMap = {
   stethoscope: Stethoscope,
@@ -32,484 +41,1735 @@ const iconMap = {
   mapPin: MapPin,
   star: Star,
 }
+const slides = [
+  {
+    image: "/images/Ayushman_banner_1.png",
+    title: "Lives Across India",
+    subtitle: "Healthcare, Education & Social Development for All",
+     buttons: [
+      { label: "Join Us", link: "/join", style: "primary" },
+      { label: "Donate", link: "/donate", style: "secondary" },
+    ],
+  },
+  {
+    image: "/images/Ayushman_Healthcare.png",
+    title: "for Every Life",
+    subtitle: "Free medical camps & health awareness in rural areas",
+     buttons: [
+      { label: "Support Healthcare", link: "/health-camps", style: "primary" },
+      
+    ],
+  },
+  {
+    image: "/images/Education.png",
+    title: "Changes Everything",
+    subtitle: "Helping children learn,grow, and build a better future",
+     buttons: [
+      { label: "Support Education", link: "/education", style: "primary" },
+   
+    ],
+  },
+  {
+    image: "/images/healthy.png" ,
+    title: "Healthy Lives",
+    subtitle: "Providing safe drinking water and hygiene awareness",
+     buttons: [
+      { label: "Donate", link: "/donate", style: "primary" },
+   
+    ],
+  },
+  {
+    image: "/images/strength.png" ,
+    title: "Strengthening Families",
+    subtitle: "Skill training & health awareness Programs",
+     buttons: [
+      { label: "Get Involved", link: "/donate", style: "primary" },
+   
+    ],
+  },
+  {
+    image: "/images/Together.png",
+    title: "Be the Change",
+    subtitle: "Join us in making a difference",
+    buttons: [
+      { label: "Volunteer / Donate", link: "/donate", style: "primary" },
+   
+    ],
+  },
+]
+// images array add karo
+const partnerImages = [
+  "/images/partner1.png",
+  "/images/partner2.png",
+  "/images/partner3.png",
+  "/images/partner4.png",
+  "/images/partner5.png",
+]
 
 export default function HomePage() {
+    const [current, setCurrent] = useState(0)
+      const [showMore, setShowMore] = useState(false)
+      const [scrollIndex, setScrollIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length)
+    }, 4000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  useEffect(() => {
+  const interval = setInterval(() => {
+    setScrollIndex((prev) => (prev + 1) % partnerImages.length)
+  }, 2200)
+
+  return () => clearInterval(interval)
+}, [])
   return (
     <div className="min-h-screen">
-      {/* Enhanced Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 py-20 lg:py-24 overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <FadeInSection className="space-y-8">
-              <div className="space-y-6">
-                <Badge variant="secondary" className="w-fit">
-                  <Award className="w-3 h-3 mr-1" />
-                  15+ Years of Trusted Service
-                </Badge>
+{/* 🔥 New Banner Section */}
+ <section className="relative w-full h-[85vh] overflow-hidden">
+      
+      {/* Images */}
+      {slides.map((slide, index) => (
+        <img
+          key={index}
+          src={slide.image}
+          alt={slide.title}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            index === current ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      ))}
 
-                <h1 className="heading-primary text-foreground">
-                  Transforming Lives Through
-                  <span className="text-primary block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                    Healthcare & Hope
-                  </span>
-                </h1>
+      {/* Content (same rahega) */}
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 h-full flex items-center">
+       <AnimatePresence mode="wait">
+  <motion.div
+    key={current}
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -30 }}
+    transition={{ duration: 0.8 }}
+    className="text-white"
+  >
 
-                <p className="body-large text-muted-foreground max-w-lg leading-relaxed">
-  Ayushman Foundation is a non-profit organization dedicated to improving the lives of
-  underserved communities across India by bridging the gap between healthcare,
-  education, and social development. Established with a vision to create lasting impact,
-  our foundation works at the grassroots level to ensure that every individual has the
-  opportunity to lead a healthy, empowered, and dignified life.
-  We believe that access to healthcare and education is not a privilege—it is a
-  fundamental right. With this belief at our core, we collaborate with local
-  communities, government bodies, healthcare professionals, and other NGOs to
-  deliver meaningful interventions in areas such as:
-</p>
+    {/* Heading */}
+    <motion.h1
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2, duration: 0.8 }}
+      style={{
+        fontFamily: "Inter, sans-serif",
+        fontSize: "84.9px",
+        lineHeight: "1.05",
+        fontWeight: "700",
+      }}
+      className="mb-4"
+    >
+      {slides[current].title.split(" ").slice(0, 2).join(" ")}
+      <br />
+      {slides[current].title.split(" ").slice(2).join(" ")}
+    </motion.h1>
 
-<ol className="list-decimal list-inside body-large text-muted-foreground max-w-lg leading-relaxed mt-2">
-  <li>Preventive and primary healthcare</li>
-  <li>Health awareness and education campaigns</li>
-  <li>Skill development and vocational training</li>
-  <li>Support for vulnerable and marginalized populations</li>
-  <li>Disaster response and medical relief</li>
-</ol>
+    {/* Subtitle */}
+    <motion.p
+      initial={{ opacity: 0, y: 25 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.4, duration: 0.8 }}
+      style={{
+        fontFamily: "Nunito, sans-serif",
+        fontSize: "16.5px",
+      }}
+      className="text-gray-200 mb-6"
+    >
+      {slides[current].subtitle}
+    </motion.p>
 
-              </div>
+    {/* Buttons */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.6, duration: 0.8 }}
+      className="flex gap-4"
+    >
+      {slides[current].buttons.map((btn, i) => (
+        <a key={i} href={btn.link}>
+          <button
+            className={
+              btn.style === "primary"
+                ? "bg-red-600 hover:bg-red-700 transition-all duration-300 hover:scale-105 px-7 py-3 rounded-md"
+                : "bg-red-500 hover:bg-red-600 transition-all duration-300 hover:scale-105 px-7 py-3 rounded-md"
+            }
+          >
+            {btn.label}
+          </button>
+        </a>
+      ))}
+    </motion.div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="group hover:scale-105 transition-transform duration-200" asChild>
-                  <Link href="/donate">
-                    <Heart className="w-5 h-5 mr-2 group-hover:animate-pulse" />
-                    Donate Now
-                  </Link>
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="group hover:scale-105 transition-transform duration-200 bg-transparent"
-                  asChild
-                >
-                  <Link href="/volunteer">
-                    <Users className="w-5 h-5 mr-2 group-hover:animate-bounce" />
-                    Volunteer With Us
-                  </Link>
-                </Button>
-              </div>
+  </motion.div>
+</AnimatePresence>
+      </div>
 
-              {/* Enhanced Impact Stats */}
-              <div className="grid grid-cols-3 gap-6 pt-8">
-                <FadeInSection delay={200} className="text-center group">
-                  <div className="text-3xl font-bold text-primary group-hover:scale-110 transition-transform duration-300">
-                    <AnimatedCounter end={50} suffix="K+" />
-                  </div>
-                  <div className="text-sm text-muted-foreground font-medium">Lives Impacted</div>
-                </FadeInSection>
-                <FadeInSection delay={400} className="text-center group">
-                  <div className="text-3xl font-bold text-primary group-hover:scale-110 transition-transform duration-300">
-                    <AnimatedCounter end={200} suffix="+" />
-                  </div>
-                  <div className="text-sm text-muted-foreground font-medium">Villages Served</div>
-                </FadeInSection>
-                <FadeInSection delay={600} className="text-center group">
-                  <div className="text-3xl font-bold text-primary group-hover:scale-110 transition-transform duration-300">
-                    <AnimatedCounter end={15} suffix="+" />
-                  </div>
-                  <div className="text-sm text-muted-foreground font-medium">Years of Service</div>
-                </FadeInSection>
-              </div>
-            </FadeInSection>
+      {/* Dots Indicator */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+        {slides.map((_, i) => (
+          <div
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-3 h-3 rounded-full cursor-pointer ${
+              current === i ? "bg-white" : "bg-white/50"
+            }`}
+          ></div>
+        ))}
+      </div>
+    </section>
 
-            <FadeInSection delay={300} className="relative">
-              <div className="relative group">
-                <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
-                <div className="relative aspect-square bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl overflow-hidden">
-                  <img
-                    src="https://scontent.fbbi2-1.fna.fbcdn.net/v/t39.30808-6/474007802_590874457024960_7467717151280159714_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=q4RgcKtd5lkQ7kNvwH8MqZ5&_nc_oc=AdntXRzqHkDvoYJyC6HKKWLZSZv-CylVJXXxTUXkbRKkSN0bkQS82vBo_Lorq2yE0_WLjMnDWAwDTUOXrWTo10Y3&_nc_zt=23&_nc_ht=scontent.fbbi2-1.fna&_nc_gid=qpXTMuNvRmg9CcEkRuGAEw&oh=00_AfYkADxE5VZwvGwlOCnfHEoHpxxIgLzHS3zvpDMIcCWjhw&oe=68C47E0C"
-                    alt="Ayushman Foundation healthcare workers"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                </div>
-              </div>
-            </FadeInSection>
+<section className="w-full py-14 bg-[#FAFAFA]">
+  <div className="max-w-6xl mx-auto px-6">
+
+    {/* Label */}
+    <div className="flex items-center gap-3 mb-4">
+      <div className="w-10 h-[2px] bg-red-600" />
+      <span className="uppercase text-xs font-semibold tracking-[3px] text-red-600">
+        About Us
+      </span>
+    </div>
+
+    {/* Heading */}
+    <h2
+      className="text-3xl md:text-5xl font-bold text-[#111827] leading-tight max-w-4xl"
+      style={{ fontFamily: "Inter, sans-serif" }}
+    >
+      Ayushman Foundation
+    </h2>
+
+    {/* Subtitle */}
+    <p
+      className="mt-3 text-lg text-gray-500 italic max-w-3xl"
+      style={{ fontFamily: "Nunito, sans-serif" }}
+    >
+      Empowering marginalized communities through sustainable
+      development and lasting social impact.
+    </p>
+
+    {/* Focus Areas */}
+    <div className="flex flex-wrap gap-2 mt-5 mb-6">
+      {[
+        "Women Empowerment",
+        "Education",
+        "Health & Nutrition",
+        "Skill Development",
+        "Environment",
+      ].map((item) => (
+        <span
+          key={item}
+          className="px-3 py-1.5 rounded-full bg-white text-sm text-gray-700 border border-gray-200 hover:border-red-200 transition-all"
+        >
+          {item}
+        </span>
+      ))}
+    </div>
+
+    {/* Content */}
+    <div className="max-w-4xl">
+      <p
+        className="text-gray-700 leading-7 text-[16px] mb-4"
+        style={{ fontFamily: "Nunito, sans-serif" }}
+      >
+        Ayushman Foundation is a dynamic, non-profit organization
+        registered under the Section 8 Company Act, 2013 dedicated to
+        the holistic empowerment of marginalized and underserved
+        communities across Odisha and beyond.
+      </p>
+
+      <p
+        className="text-gray-700 leading-7 text-[16px]"
+        style={{ fontFamily: "Nunito, sans-serif" }}
+      >
+        Established with a vision to create sustainable, dignified,
+        and empowered lives, the Foundation works at the grassroots
+        level with a strong focus on women empowerment, sustainable
+        livelihoods, skill development, health & nutrition,
+        education, and environmental conservation.
+      </p>
+    </div>
+
+    {/* Read More */}
+    <div className="mt-6">
+      <a
+        href="/about"
+        className="inline-flex items-center gap-2 text-red-600 font-semibold hover:gap-4 transition-all duration-300"
+        style={{ fontFamily: "Inter, sans-serif" }}
+      >
+        Read More
+        <span className="text-lg">→</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+<section className="w-full bg-[#F7F8F5] py-14 overflow-hidden">
+  <div className="max-w-[1280px] mx-auto px-5 lg:px-[60px]">
+
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+
+      {/* LEFT CONTENT */}
+      <div className="relative z-10">
+
+        {/* Tag */}
+        <div className="inline-flex items-center gap-2 bg-[#EEF5EF] px-4 py-2 rounded-full mb-5">
+          <div className="w-3 h-3 rounded-full bg-[#16A34A]" />
+          <span className="text-[#15803D] font-semibold text-[12px]">
+            Our Purpose
+          </span>
+        </div>
+
+        {/* Heading */}
+        <h2 className="text-[#06113C] text-[42px] leading-[1.05] font-bold tracking-[-1px] mb-4">
+          Our Mission <span className="text-[#16A34A]">&</span>
+          <br />
+          Vision
+        </h2>
+
+        {/* Small Line */}
+        <div className="w-[55px] h-[3px] bg-[#16A34A] rounded-full mb-6" />
+
+        {/* Content Block 1 */}
+        <div className="flex items-start gap-4 mb-7">
+
+          {/* Icon Circle */}
+          <div className="min-w-[55px] h-[55px] rounded-full bg-[#EAF6EC] flex items-center justify-center">
+            <svg
+              width="22"
+              height="22"
+              fill="none"
+              stroke="#16A34A"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          </div>
+
+          <div>
+            <p className="text-[#222] text-[14px] leading-[1.9] max-w-[500px]">
+              To build an equitable and inclusive society where every individual — especially women, youth, and tribal communities — has equal access to opportunities for growth,{" "}
+              <span className="text-[#16A34A] font-semibold">
+               dignity,
+              </span>{" "}
+              and{" "}
+              <span className="text-[#16A34A] font-semibold">
+                prosperity.
+              </span>
+            </p>
           </div>
         </div>
-      </section>
 
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <FadeInSection>
-              <div className="relative group">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="relative h-80 rounded-2xl overflow-hidden">
-                    <img
-                      src="/Ayushman1.jpg"
-                      alt="Medical team meeting"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                  </div>
-                  <div className="space-y-4">
-                    <div className="relative h-40 rounded-2xl overflow-hidden">
-                      <img
-                        src="/Ayushman4.jpg"
-                        alt="Health camp setup"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
-                    </div>
-                    <div className="relative h-40 rounded-2xl overflow-hidden">
-                      <img
-                        src="/Ayushman3.jpg"
-                        alt="Community education"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </FadeInSection>
+     
 
-            <FadeInSection delay={300}>
-              <div className="space-y-6">
-                <Badge variant="outline" className="mb-4">
-                  About Us
-                </Badge>
-                <h2 className="heading-secondary">Our Mission & Vision</h2>
-                <p className="text-muted-foreground leading-relaxed">
-To create a healthier, equitable, and empowered society where every individual,
- regardless of their socio-economic background, has the opportunity to live a life of dignity,
- good health, and hope.
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
-To serve humanity by ensuring accessible, affordable, and quality healthcare for all—
- especially the underprivileged—while promoting education, social awareness, and
- sustainable development to uplift communities and improve overall well-being.
-                </p>
-                
-                <div className="grid grid-cols-2 gap-6 pt-4">
-                  <div className="space-y-2">
-                    <div className="flex items-center">
-                      <Target className="w-5 h-5 text-primary mr-2" />
-                      <h4 className="font-semibold">Our Mission</h4>
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      To provide comprehensive healthcare services to underserved communities through innovative programs.
-                    </p>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex items-center">
-                      <Eye className="w-5 h-5 text-primary mr-2" />
-                      <h4 className="font-semibold">Our Vision</h4>
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      A India where quality healthcare is accessible to all, creating healthier, thriving communities.
-                    </p>
-                  </div>
-                </div>
-                
-                <Button className="mt-6 group" asChild>
-                  <Link href="/about">
-                    Learn More About Us
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </Button>
-              </div>
-            </FadeInSection>
+        {/* Bottom Mission Card */}
+        <div className="border-t border-[#D9E2DC] pt-6 flex items-start gap-4">
+
+          <div className="min-w-[65px] h-[65px] rounded-full bg-[#EDF4FF] flex items-center justify-center shadow-sm">
+            <svg
+              width="24"
+              height="24"
+              fill="none"
+              stroke="#2563EB"
+              strokeWidth="2.2"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="9" />
+              <circle cx="12" cy="12" r="4" />
+            </svg>
+          </div>
+
+          <div>
+            <h3 className="text-[#1456D9] text-[24px] font-bold mb-2">
+              Our Mission
+            </h3>
+
+            <p className="text-[#222] text-[14px] leading-[1.8] max-w-[470px]">
+             To empower marginalized communities through integrated interventions in livelihood promotion, skill enhancement, health & hygiene, education, and environmental sustainability, while fostering strong community institutions and market-driven enterprises.
+            </p>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Trust Indicators */}
-      <section className="py-12 bg-muted/20 border-y border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInSection>
-            <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-              <div className="flex items-center space-x-2">
-                <Shield className="w-5 h-5 text-primary" />
-                <span className="text-sm font-medium">ISO Certified</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Award className="w-5 h-5 text-primary" />
-                <span className="text-sm font-medium">NGO Excellence Award</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Globe className="w-5 h-5 text-primary" />
-                <span className="text-sm font-medium">UN Partner</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-primary" />
-                <span className="text-sm font-medium">80G Tax Exemption</span>
-              </div>
+     {/* RIGHT SIDE */}
+<div className="relative h-[520px] flex items-center justify-end">
+
+  {/* BIG LIGHT SHAPE */}
+  <div className="absolute top-[-20px] right-[60px] w-[420px] h-[420px] bg-[#EAF1FF] rounded-[45%] rotate-[12deg]" />
+
+  
+
+  {/* MAIN BIG IMAGE */}
+  <div className="absolute top-[10px] right-[80px] w-[390px] h-[390px] rounded-[45%] overflow-hidden border-[8px] border-white shadow-xl z-20">
+
+    <img
+      src="/images/missionimg.jpeg"
+      alt="Main"
+      className="w-full h-full object-cover"
+    />
+
+  </div>
+
+  {/* TOP RIGHT SMALL IMAGE */}
+  <div className="absolute top-[40px] right-[10px] w-[150px] h-[150px] rounded-full overflow-hidden border-[7px] border-white shadow-lg z-30">
+
+    <img
+      src="/images/community.jpeg"
+      alt="Community"
+      className="w-full h-full object-cover"
+    />
+
+  </div>
+
+  {/* BOTTOM RIGHT SMALL IMAGE */}
+  <div className="absolute bottom-[60px] right-[0px] w-[170px] h-[170px] rounded-full overflow-hidden border-[7px] border-white shadow-lg z-30">
+
+    <img
+      src="/images/health.jpg"
+      alt="Health"
+      className="w-full h-full object-cover"
+    />
+
+  </div>
+
+  {/* CENTER ICON */}
+  <div className="absolute bottom-[135px] right-[145px] w-[70px] h-[70px] rounded-full bg-white shadow-xl flex items-center justify-center z-40">
+
+    <div className="w-[48px] h-[48px] rounded-full bg-[#F2F7FF] flex items-center justify-center">
+
+      <svg
+        width="26"
+        height="26"
+        fill="none"
+        stroke="#16A34A"
+        strokeWidth="2.3"
+        viewBox="0 0 24 24"
+      >
+        <path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.5-7 10-7 10z" />
+      </svg>
+
+    </div>
+
+  </div>
+
+
+
+</div>
+
+    </div>
+  </div>
+</section>
+
+  <section className="relative py-10 overflow-hidden">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <FadeInSection>
+      <div className="relative overflow-hidden rounded-[26px] bg-white border border-[#edf2f7] shadow-[0_8px_30px_rgba(0,0,0,0.05)]">
+
+        {/* LEFT SOFT SHAPE */}
+        <div className="absolute left-0 bottom-0 w-[220px] h-[120px] bg-[#eef5ff] rounded-tr-[100px] opacity-80" />
+
+        {/* RIGHT TRIANGLE */}
+        <div className="absolute right-0 top-0 w-[180px] h-[120px] bg-[#eef5ff] clip-path-diagonal opacity-80" />
+
+        {/* LEFT DOTS */}
+        <div className="absolute left-5 top-5 hidden lg:grid grid-cols-4 gap-2 opacity-40">
+          {Array.from({ length: 16 }).map((_, i) => (
+            <span
+              key={i}
+              className="w-[4px] h-[4px] rounded-full bg-[#cfe0ff]"
+            />
+          ))}
+        </div>
+
+        {/* RIGHT DOTS */}
+        <div className="absolute right-5 bottom-5 hidden lg:grid grid-cols-4 gap-2 opacity-40">
+          {Array.from({ length: 16 }).map((_, i) => (
+            <span
+              key={i}
+              className="w-[4px] h-[4px] rounded-full bg-[#cfe0ff]"
+            />
+          ))}
+        </div>
+
+        <div className="relative grid grid-cols-2 lg:grid-cols-4">
+
+          {/* ITEM 1 */}
+          <div className="relative flex flex-col items-center text-center px-5 py-8">
+            <div className="w-[72px] h-[72px] rounded-full border border-[#d7e6ff] bg-[#f5f9ff] flex items-center justify-center mb-4">
+              <Shield className="w-8 h-8 text-[#2454d3] stroke-[2]" />
             </div>
-          </FadeInSection>
+
+            <h3 className="text-[17px] font-semibold text-[#111827] leading-tight">
+              ISO Certified
+            </h3>
+
+            <p className="mt-2 text-[13px] leading-6 text-[#6b7280] max-w-[190px]">
+              Ensuring quality and excellence
+            </p>
+
+            <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[1px] h-[90px] bg-[#e5e7eb]" />
+          </div>
+
+          {/* ITEM 2 */}
+          <div className="relative flex flex-col items-center text-center px-5 py-8">
+            <div className="w-[72px] h-[72px] rounded-full border border-[#d7e6ff] bg-[#f5f9ff] flex items-center justify-center mb-4">
+              <Award className="w-8 h-8 text-[#2454d3] stroke-[2]" />
+            </div>
+
+            <h3 className="text-[17px] font-semibold text-[#111827] leading-tight">
+              NGO Excellence
+            </h3>
+
+            <p className="mt-2 text-[13px] leading-6 text-[#6b7280] max-w-[190px]">
+              Recognized for our impact
+            </p>
+
+            <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[1px] h-[90px] bg-[#e5e7eb]" />
+          </div>
+
+          {/* ITEM 3 */}
+          <div className="relative flex flex-col items-center text-center px-5 py-8">
+            <div className="w-[72px] h-[72px] rounded-full border border-[#d7e6ff] bg-[#f5f9ff] flex items-center justify-center mb-4">
+              <Globe className="w-8 h-8 text-[#2454d3] stroke-[2]" />
+            </div>
+
+            <h3 className="text-[17px] font-semibold text-[#111827] leading-tight">
+              UN Partner
+            </h3>
+
+            <p className="mt-2 text-[13px] leading-6 text-[#6b7280] max-w-[190px]">
+              Proud global collaboration
+            </p>
+
+            <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[1px] h-[90px] bg-[#e5e7eb]" />
+          </div>
+
+          {/* ITEM 4 */}
+          <div className="relative flex flex-col items-center text-center px-5 py-8">
+            <div className="w-[72px] h-[72px] rounded-full border border-[#d7e6ff] bg-[#f5f9ff] flex items-center justify-center mb-4">
+              <CheckCircle className="w-8 h-8 text-[#2454d3] stroke-[2]" />
+            </div>
+
+            <h3 className="text-[17px] font-semibold text-[#111827] leading-tight">
+              80G Tax Benefit
+            </h3>
+
+            <p className="mt-2 text-[13px] leading-6 text-[#6b7280] max-w-[190px]">
+              Donations are tax exempted
+            </p>
+          </div>
         </div>
-      </section>
+      </div>
+    </FadeInSection>
+  </div>
+
+  <style jsx>{`
+    .clip-path-diagonal {
+      clip-path: polygon(100% 0, 0 0, 100% 100%);
+    }
+  `}</style>
+</section>
+
+{/* ================= EXACT OUR IMPACT SECTION ================= */}
+<section className="relative w-full bg-[#F3F3F3] overflow-hidden">
+
+  {/* TOP SPACING */}
+  <div className="pt-[74px]" />
+
+  {/* HEADING AREA */}
+  <div className="flex items-start">
+
+    {/* LEFT HEADING */}
+    <div className="ml-[78px]">
+      <h2
+        className="text-[#020B2D]"
+        style={{
+          fontFamily: "Inter, sans-serif",
+          fontSize: "50px",
+          fontWeight: "700",
+          lineHeight: "0.92",
+          letterSpacing: "-1px",
+        }}
+      >
+        Our Impact
+      </h2>
+    </div>
+
+    {/* RIGHT TEXT */}
+    <div className="ml-[70px] mt-[8px]">
+      <p
+        className="text-[#111827] max-w-[770px]"
+        style={{
+          fontFamily: "Nunito, sans-serif",
+          fontSize: "20px",
+          lineHeight: "1.34",
+          fontWeight: "400",
+        }}
+      >
+        Every number represents a life touched, a family
+        supported, and a community uplifted through our
+        continuous efforts.
+      </p>
+    </div>
+  </div>
+
+  {/* IMAGES + BRUSH AREA */}
+  <div className="relative mt-[58px] h-[470px] overflow-hidden">
+
+    {/* BLUE BRUSH */}
+    <img
+      src="/images/blue-brush.png"
+      alt=""
+      className="absolute left-0 bottom-0 w-full h-[464px] object-cover z-0"
+    />
+
+    {/* FIRST IMAGE */}
+    <div className="absolute left-[101px] top-0 z-20">
+      <div className="w-[300px] h-[308px] rounded-[22px] overflow-hidden">
+        <img
+          src="/images/impact1.png"
+          alt=""
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* TEXT */}
+      <div className="mt-[83px] ml-[12px]">
+        <h3
+          className="text-white"
+          style={{
+            fontFamily: "Inter, sans-serif",
+            fontSize: "28px",
+            fontWeight: "700",
+            lineHeight: "1",
+          }}
+        >
+          50K+
+        </h3>
+
+        <p
+          className="text-white mt-[4px]"
+          style={{
+            fontFamily: "Nunito, sans-serif",
+            fontSize: "23px",
+            fontWeight: "400",
+            lineHeight: "1.15",
+          }}
+        >
+          Lives Impacted
+        </p>
+      </div>
+    </div>
+
+    {/* SECOND IMAGE */}
+    <div className="absolute left-[543px] top-0 z-20">
+      <div className="w-[300px] h-[308px] rounded-[22px] overflow-hidden">
+        <img
+          src="/images/impact2.png"
+          alt=""
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* TEXT */}
+      <div className="mt-[83px] ml-[12px]">
+        <h3
+          className="text-white"
+          style={{
+            fontFamily: "Inter, sans-serif",
+            fontSize: "28px",
+            fontWeight: "700",
+            lineHeight: "1",
+          }}
+        >
+          200+
+        </h3>
+
+        <p
+          className="text-white mt-[4px]"
+          style={{
+            fontFamily: "Nunito, sans-serif",
+            fontSize: "23px",
+            fontWeight: "400",
+            lineHeight: "1.15",
+          }}
+        >
+          Villages Served
+        </p>
+      </div>
+    </div>
+
+    {/* THIRD IMAGE PARTIAL */}
+    <div className="absolute left-[945px] top-0 z-20">
+      <div className="w-[300px] h-[308px] rounded-[22px] overflow-hidden">
+        <img
+          src="/images/impcat3.png"
+          alt=""
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* TEXT */}
+      <div className="mt-[83px] ml-[12px]">
+        <h3
+          className="text-white"
+          style={{
+            fontFamily: "Inter, sans-serif",
+            fontSize: "28px",
+            fontWeight: "700",
+            lineHeight: "1",
+          }}
+        >
+          15+
+        </h3>
+
+        <p
+          className="text-white mt-[4px]"
+          style={{
+            fontFamily: "Nunito, sans-serif",
+            fontSize: "22px",
+            fontWeight: "400",
+            lineHeight: "1.15",
+          }}
+        >
+          Years of Service
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
 
       {/* Enhanced Programs Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInSection className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="mb-4">
-              Our Impact Areas
-            </Badge>
-            <h2 className="heading-secondary">Comprehensive Care Programs</h2>
-            <p className="body-large text-muted-foreground max-w-2xl mx-auto">
-              We focus on holistic healthcare, education, and community development to create sustainable, long-lasting
-              change in underserved communities.
+ <section className="relative py-14 overflow-hidden bg-white">
+  {/* Soft Decorative Shape */}
+  <div className="absolute top-0 left-0 w-44 h-44 bg-[#eef5e8] rounded-full opacity-50 -translate-x-20 -translate-y-20" />
+
+  {/* Small Decorative Leaf */}
+  <div className="absolute left-0 top-24 opacity-20 hidden lg:block">
+    <img
+      src="/images/leaf-line.png"
+      alt="H"
+      className="w-28"
+    />
+  </div>
+
+  {/* Right Corner Image */}
+  <div className="absolute top-0 right-0 hidden xl:block">
+    <div className="relative">
+      <div className="w-[240px] h-[170px] overflow-hidden rounded-bl-[80px] ">
+        <img
+          src="/images/corner.png"
+          alt="ngo"
+          className="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+   
+  {/* Heading */}
+<FadeInSection className="text-center mb-10">
+  <div className="flex justify-center mb-4">
+    <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#d7decf] bg-[#f4f7ef]">
+      <Leaf className="w-4 h-4 text-[#2d6a4f]" />
+
+      <span className="text-[13px] font-medium text-[#2d6a4f]">
+        Key Focus Areas & Expertise
+      </span>
+    </div>
+  </div>
+
+  <h2 className="text-3xl md:text-4xl font-bold text-[#0b1633] leading-tight">
+    Empowering Communities Through Sustainable Development
+  </h2>
+
+  <div className="w-16 h-[3px] bg-[#7fb069] rounded-full mx-auto mt-4 mb-5" />
+
+  <p className="max-w-3xl mx-auto text-[15px] leading-7 text-[#6b7280]">
+    Ayushman Foundation works across women empowerment,
+    entrepreneurship, health, education, environmental sustainability,
+    and institutional strengthening to create long-term community impact.
+  </p>
+</FadeInSection>
+
+    {/* Cards */}
+  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+     {[
+  {
+    icon: Users,
+    title: "Women Empowerment & Sustainable Livelihoods",
+    description:
+      "Formation and handholding of Self-Help Groups (SHGs) and Women-led Producer Companies. Promotion of traditional crafts, applique & embroidery work, jute handicrafts, and GI-tagged products.",
+    stats: "SHGs",
+    sub: "women-led initiatives",
+    color: "#C62828",
+    bg: "#FFF1F1",
+    image: "/images/women.jpg",
+  },
+
+  {
+    icon: Briefcase,
+    title: "Skill Development & Entrepreneurship",
+    description:
+      "Skill upgradation, design development, branding, entrepreneurship support, and direct market linkages to create sustainable livelihood opportunities.",
+    stats: "Skills",
+    sub: "training & enterprise support",
+    color: "#2457C5",
+    bg: "#EEF3FF",
+    image: "/images/skill.jpg",
+  },
+
+  {
+    icon: HeartPulse,
+    title: "Health, Nutrition & Hygiene",
+    description:
+      "Community health awareness, mobile health camps, menstrual hygiene management, nutrition support programs, and community wellness initiatives.",
+    stats: "Health",
+    sub: "well-being programs",
+    color: "#8E24AA",
+    bg: "#F7EEFF",
+    image: "/images/health.jpg",
+  },
+
+  {
+    icon: GraduationCap,
+    title: "Education & Youth Development",
+    description:
+      "Educational support for underprivileged children, digital literacy initiatives, youth development, and learning opportunities.",
+    stats: "Youth",
+    sub: "education support",
+    color: "#2F7D32",
+    bg: "#EDF7EA",
+    image: "/images/education.jpg",
+  },
+
+  {
+    icon: Leaf,
+    title: "Environment & Climate Action",
+    description:
+      "Tree plantation drives, waste management, cleanliness campaigns, community kitchen gardens, and climate-resilient livelihood models.",
+    stats: "Green",
+    sub: "environment initiatives",
+    color: "#0F9D58",
+    bg: "#ECFDF3",
+    image: "/images/environment.jpg",
+  },
+
+  {
+    icon: Building2,
+    title: "Institutional Building",
+    description:
+      "Strong expertise in convergence with Government schemes including MSME, NABARD, TRIFED, ORMAS, PM Vishwakarma, GeM and other development programs.",
+    stats: "Govt",
+    sub: "institutional partnerships",
+    color: "#EA7B16",
+    bg: "#FFF3EA",
+    image: "/images/institution.jpg",
+  },
+].map((program, index) => (
+        <FadeInSection key={index} delay={index * 100}>
+       <Card className="overflow-hidden border border-[#efefef] rounded-[20px] shadow-sm hover:shadow-xl transition-all duration-300 bg-white group max-w-[360px] mx-auto">
+
+  {/* Image */}
+  <div className="relative px-3 pt-3">
+
+    <div className="relative overflow-hidden rounded-[14px]">
+      <img
+        src={program.image}
+        alt={program.title}
+        className="w-full h-[155px] object-cover"
+      />
+
+  <svg
+  className="absolute bottom-0 left-0 w-full"
+  viewBox="0 0 500 60"
+  preserveAspectRatio="none"
+>
+  <path
+    d="M0,35 
+       C120,75 250,5 500,38 
+       L500,60 
+       L0,60 Z"
+    fill={program.bg}
+  />
+</svg>
+    </div>
+
+    {/* Floating Icon */}
+    <div
+      className="absolute bottom-[-12px] left-7 w-14 h-14 rounded-full flex items-center justify-center shadow-md border-[3px]"
+      style={{
+        background: "#fff",
+        borderColor: program.bg,
+      }}
+    >
+      <program.icon
+        className="w-5 h-5"
+        style={{ color: program.color }}
+      />
+    </div>
+  </div>
+
+  {/* Content */}
+  <CardContent className="px-6 pt-8 pb-5">
+
+    {/* Title */}
+    <h3
+      className="text-[20px] leading-snug font-bold mb-2"
+      style={{
+        color: program.color,
+        fontFamily: "Georgia, serif",
+      }}
+    >
+      {program.title}
+    </h3>
+
+    {/* Small Line */}
+    <div
+      className="w-8 h-[2px] rounded-full mb-3"
+      style={{ background: program.color }}
+    />
+
+    {/* Description */}
+    <p className="text-[14px] leading-7 text-[#6b7280] mb-5">
+      {program.description}
+    </p>
+
+    {/* Stats */}
+    <div
+      className="rounded-2xl px-4 py-3 flex items-center gap-3 mb-5"
+      style={{ background: program.bg }}
+    >
+      <div
+        className="w-10 h-10 rounded-full flex items-center justify-center text-white"
+        style={{ background: program.color }}
+      >
+        <program.icon className="w-4 h-4" />
+      </div>
+
+      <div>
+        <div
+          className="text-[28px] font-bold leading-none"
+          style={{ color: program.color }}
+        >
+          {program.stats}
+        </div>
+
+        <div className="text-[12px] text-[#4b5563] mt-1">
+          {program.sub}
+        </div>
+      </div>
+    </div>
+
+    {/* Button */}
+    <Button
+      variant="ghost"
+      className="p-0 h-auto text-[14px] font-semibold hover:bg-transparent"
+      style={{ color: program.color }}
+    >
+      Learn More
+      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+    </Button>
+
+  </CardContent>
+</Card>
+        </FadeInSection>
+      ))}
+    </div>
+
+   {/* Bottom Text */}
+<div className="mt-10 text-center">
+
+  {/* Decorative Line */}
+  <div className="flex justify-center mb-3">
+    <div className="relative flex items-center">
+      <div className="w-16 h-[1.5px] bg-[#b7c9b0]" />
+
+      <div className="mx-3 text-[#7fb069] text-2xl">
+        ♡
+      </div>
+
+      <div className="w-16 h-[1.5px] bg-[#b7c9b0]" />
+    </div>
+  </div>
+
+  <p className="text-[#2f7d32] italic text-[18px] font-medium">
+    Together, we build stronger communities and brighter futures.
+  </p>
+</div>
+
+  </div>
+</section>
+
+{/* <section className="relative w-full overflow-hidden  bg-[#FFE500]">
+
+  <div className="absolute bottom-0 left-0 w-full z-0">
+    <img
+      src="/images/yellow-brush-bottom.png"
+      alt=""
+      className="w-full object-cover"
+    />
+  </div>
+
+  <div className="relative z-10 max-w-[1350px] mx-auto ">
+
+    
+    <h2
+      className="text-[#06163A] mb-[55px]"
+      style={{
+        fontFamily: "Inter, sans-serif",
+        fontSize: "50px",
+        fontWeight: "700",
+        lineHeight: "1",
+      }}
+    >
+      Our Roots
+    </h2>
+
+    
+    <div className="relative h-[520px]">
+
+     
+      <div className="absolute left-[20px] bottom-[89px] z-10">
+
+        <div className="w-[430px] bg-[#ffffff] rounded-[22px] px-[34px] pt-[62px] pb-[39px] relative">
+
+         
+          <div className="absolute left-[28px] top-[5px] text-black text-[95px] leading-none font-serif">
+            “
+          </div>
+
+          <h3
+            className="text-[#06163A]"
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontSize: "18px",
+              fontWeight: "700",
+            }}
+          >
+            Suresh Mishra
+          </h3>
+
+          <p
+            className="text-[#06163A] mt-1"
+            style={{
+              fontFamily: "Nunito, sans-serif",
+              fontSize: "15px",
+              fontWeight: "500",
+            }}
+          >
+            CMD, Ayushman Foundation
+          </p>
+
+          <p
+            className="text-[#111827] mt-5"
+            style={{
+              fontFamily: "Nunito, sans-serif",
+              fontSize: "14px",
+              lineHeight: "1.55",
+              fontWeight: "400",
+            }}
+          >
+            At Ayushman Foundation, we are committed to empowering
+            lives through healthcare, education, and community
+            support. Together, we can create a healthier and more
+            inclusive society.
+          </p>
+        </div>
+      </div>
+
+      
+      <div className="absolute right-[40px] top-[20px] z-20">
+
+        <div className="relative w-[691px] bg-[#ffffff] rounded-[22px] px-[52px] pt-[55px] pb-[36px]">
+
+         
+          <div className="absolute left-[42px] top-[10px] text-black text-[120px] leading-none font-serif">
+            “
+          </div>
+
+         
+          <div className="max-w-[399px]">
+
+            <h3
+              className="text-[#06163A]"
+              style={{
+                fontFamily: "Inter, sans-serif",
+                fontSize: "22px",
+                fontWeight: "700",
+              }}
+            >
+              Suresh Mishra
+            </h3>
+
+            <p
+              className="text-[#06163A] mt-1"
+              style={{
+                fontFamily: "Nunito, sans-serif",
+                fontSize: "19px",
+                fontWeight: "500",
+              }}
+            >
+              CMD, Ayushman Foundation
             </p>
-          </FadeInSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Stethoscope,
-                title: "Healthcare Services",
-                description:
-                  "Mobile clinics, health camps, telemedicine, and preventive care programs reaching remote villages.",
-                stats: "25K+ patients treated annually",
-                color: "text-primary",
-                bgColor: "bg-primary/10",
-              },
-              {
-                icon: GraduationCap,
-                title: "Education Support",
-                description:
-                  "Scholarships, digital literacy, vocational training, and educational infrastructure development.",
-                stats: "5K+ students supported",
-                color: "text-secondary",
-                bgColor: "bg-secondary/10",
-              },
-              {
-                icon: Users,
-                title: "Community Development",
-                description: "Women empowerment, skill development, microfinance, and sustainable livelihood programs.",
-                stats: "100+ communities empowered",
-                color: "text-accent",
-                bgColor: "bg-accent/10",
-              },
-            ].map((program, index) => (
-              <FadeInSection key={index} delay={index * 200}>
-                <Card className="group hover:shadow-xl transition-all duration-500 border-0 bg-card/50 hover:bg-card h-full">
-                  <CardContent className="p-8 space-y-6 h-full flex flex-col">
-                    <div className="flex items-start justify-between">
-                      <div
-                        className={`w-14 h-14 rounded-xl ${program.bgColor} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-                      >
-                        <program.icon className={`w-7 h-7 ${program.color}`} />
-                      </div>
-                      <TrendingUp className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
-                    </div>
+            <p
+              className="text-[#111827] mt-6"
+              style={{
+                fontFamily: "Nunito, sans-serif",
+                fontSize: "18px",
+                lineHeight: "1.65",
+                fontWeight: "400",
+              }}
+            >
+              At Ayushman Foundation, we are committed to empowering
+              lives through healthcare, education, and community
+              support. Together, we can create a healthier and more
+              inclusive society.
+            </p>
+          </div>
 
-                    <div className="space-y-3 flex-grow">
-                      <h3 className="heading-tertiary group-hover:text-primary transition-colors duration-300">
-                        {program.title}
-                      </h3>
-                      <p className="text-muted-foreground leading-relaxed">{program.description}</p>
-                    </div>
+          
+          <div className="absolute right-[-100px] top-[-140px]">
 
-                    <div className="space-y-4">
-                      <div className="text-sm font-semibold text-primary">{program.stats}</div>
-                      <Button
-                        variant="ghost"
-                        className="p-0 h-auto font-medium text-primary hover:text-primary/80 group/btn"
-                      >
-                        Learn More
-                        <ArrowRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform duration-200" />
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </FadeInSection>
-            ))}
+          
+            <div className="absolute w-[260px] h-[260px]  rounded-full blur-[60px] opacity-70 top-[110px] left-[40px]" />
+
+            <img
+              src="/images/founder.png"
+              alt="Founder"
+              className="relative h-[432px] object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.35)]"
+            />
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section> */}
+
+<section className="relative py-[70px] bg-[#FBFBF8] overflow-hidden">
+  {/* SIDE IMAGES */}
+  <div className="hidden 2xl:block">
+    <img
+      src="images/v1.png"
+      alt=""
+      className="absolute left-0 top-0 w-[190px]"
+    />
+
+    <img
+      src="/left-bottom.png"
+      alt=""
+      className="absolute left-0 bottom-0 w-[190px]"
+    />
+
+    <img
+      src="/right-top.png"
+      alt=""
+      className="absolute right-0 top-0 w-[190px]"
+    />
+
+    <img
+      src="/right-bottom.png"
+      alt=""
+      className="absolute right-0 bottom-0 w-[190px]"
+    />
+  </div>
+
+  <div className="max-w-[1280px] mx-auto px-6 relative z-10">
+    {/* HEADER */}
+    <div className="text-center mb-[55px]">
+      <div
+        className="inline-flex items-center justify-center h-[38px] px-4 rounded-full bg-[#EAF5EE] text-[#198754] text-[13px] font-medium mb-4"
+        style={{ fontFamily: "Poppins, sans-serif" }}
+      >
+        Community Voices
+      </div>
+
+      <h2
+        className="text-[52px] leading-[1.05] text-[#111827]"
+        style={{
+          fontFamily: "Playfair Display, serif",
+          fontWeight: 700,
+        }}
+      >
+        Stories of Transformation
+      </h2>
+
+      <p
+        className="max-w-[760px] mx-auto mt-4 text-[15px] leading-[30px] text-[#667085]"
+        style={{ fontFamily: "Poppins, sans-serif" }}
+      >
+        Real stories from the communities and volunteers whose lives have been
+        transformed through our programs.
+      </p>
+    </div>
+
+    {/* CARDS */}
+ <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[22px] max-w-[980px] mx-auto">
+      {/* CARD 1 */}
+      <div className="relative bg-white rounded-[24px] border border-[#23B26D] px-[30px] pt-[11px] pb-[26px] overflow-hidden h-[314px]">
+        <div
+          className="text-[#23B26D] text-[58px] leading-none"
+          style={{
+            fontFamily: "Georgia",
+            fontWeight: 700,
+          }}
+        >
+          “
+        </div>
+
+        <p
+          className="mt-1 text-[14px] leading-[25px] italic text-[#1D2939]"
+          style={{
+            fontFamily: "Poppins, sans-serif",
+          }}
+        >
+          The mobile clinic brought hope to our village. My daughter received
+          life-saving treatment that wouldn't have been possible otherwise.
+        </p>
+
+        <div className="flex gap-[3px] mt-4 text-[#FFB800] text-[16px]">
+          ★ ★ ★ ★ ★
+        </div>
+
+        <div className="flex items-center mt-6">
+          <img
+            src="/indian-woman-smiling.png"
+            alt=""
+            className="w-[50px] h-[50px] rounded-full object-cover border border-[#23B26D]"
+          />
+
+          <div className="ml-3">
+            <h4
+              className="text-[16px] text-[#101828]"
+              style={{
+                fontFamily: "Poppins, sans-serif",
+                fontWeight: 600,
+              }}
+            >
+              Priya Sharma
+            </h4>
+
+            <p
+              className="text-[13px] text-[#667085] mt-1"
+              style={{ fontFamily: "Poppins, sans-serif" }}
+            >
+              Beneficiary
+            </p>
           </div>
         </div>
-      </section>
 
-      {/* Enhanced Impact Showcase */}
-      {/* <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInSection className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="mb-4">
-              Real Impact
-            </Badge>
-            <h2 className="heading-secondary">Measurable Change Across India</h2>
-            <p className="body-large text-muted-foreground max-w-2xl mx-auto">
-              Our data-driven approach ensures every rupee donated creates maximum impact in the communities we serve.
-            </p>
-          </FadeInSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            <FadeInSection delay={0}>
-              <StatsCard
-                icon={iconMap["stethoscope"]}
-                title="Medical Consultations"
-                value="25,000+"
-                description="Annual healthcare services provided"
-                trend={{ value: 15, label: "vs last year" }}
-                color="emerald"
-              />
-            </FadeInSection>
-            <FadeInSection delay={150}>
-              <StatsCard
-                icon={iconMap["graduationCap"]}
-                title="Students Educated"
-                value="5,000+"
-                description="Scholarships and educational support"
-                trend={{ value: 22, label: "vs last year" }}
-                color="blue"
-              />
-            </FadeInSection>
-            <FadeInSection delay={300}>
-              <StatsCard
-                icon={iconMap["mapPin"]}
-                title="Villages Transformed"
-                value="150+"
-                description="Communities with active programs"
-                trend={{ value: 8, label: "new this year" }}
-                color="orange"
-              />
-            </FadeInSection>
-            <FadeInSection delay={450}>
-              <StatsCard
-                icon={iconMap["star"]}
-                title="Satisfaction Rate"
-                value="98%"
-                description="Beneficiary satisfaction score"
-                trend={{ value: 3, label: "improvement" }}
-                color="blue"
-              />
-            </FadeInSection>
-          </div>
-
-          <FadeInSection delay={600}>
-            <Card className="bg-gradient-to-r from-primary/5 to-secondary/5 border-0">
-              <CardContent className="p-8">
-                <div className="text-center mb-8">
-                  <h3 className="heading-tertiary mb-2">2024 Goals Progress</h3>
-                  <p className="text-muted-foreground">Tracking our annual objectives</p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2">
-                      <Target className="w-5 h-5 text-emerald-600" />
-                      <span className="font-medium">Healthcare Outreach</span>
-                    </div>
-                    <ProgressBar value={75} label="30,000 consultations target" color="emerald" />
-                  </div>
-
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2">
-                      <BookOpen className="w-5 h-5 text-blue-600" />
-                      <span className="font-medium">Education Support</span>
-                    </div>
-                    <ProgressBar value={60} label="7,000 students target" color="blue" />
-                  </div>
-
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2">
-                      <Activity className="w-5 h-5 text-orange-600" />
-                      <span className="font-medium">Community Programs</span>
-                    </div>
-                    <ProgressBar value={85} label="200 villages target" color="orange" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </FadeInSection>
+        {/* ICON */}
+        <div className="absolute right-[28px] bottom-[35px] opacity-[0.15]">
+          <svg
+            width="55"
+            height="55"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#23B26D"
+            strokeWidth="1.5"
+          >
+            <path d="M7 21L3 17L7 13" />
+            <path d="M17 3L21 7L17 11" />
+          </svg>
         </div>
-      </section> */}
 
-      {/* Enhanced Testimonials Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInSection className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="mb-4">
-              Community Voices
-            </Badge>
-            <h2 className="heading-secondary">Stories of Transformation</h2>
-            <p className="body-large text-muted-foreground max-w-2xl mx-auto">
-              Real stories from the communities and volunteers whose lives have been transformed through our programs.
+       {/* BLUSH WAVE */}
+<div className="absolute bottom-0 right-0">
+  <svg
+    width="120"
+    height="42"
+    viewBox="0 0 120 42"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <linearGradient
+        id="greenGradient"
+        x1="0"
+        y1="0"
+        x2="120"
+        y2="42"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0%" stopColor="#16A34A" />
+        <stop offset="50%" stopColor="#22C55E" />
+        <stop offset="100%" stopColor="#86EFAC" />
+      </linearGradient>
+    </defs>
+
+    <path
+      d="M120 42H0C40 42 62 18 120 0V42Z"
+      fill="url(#greenGradient)"
+    />
+  </svg>
+</div>
+      </div>
+
+      {/* CARD 2 */}
+      <div className="relative bg-white rounded-[24px] border border-[#2F80ED] px-[30px] pt-[11px] pb-[26px] overflow-hidden h-[314px]">
+        <div
+          className="text-[#2F80ED] text-[58px] leading-none"
+          style={{
+            fontFamily: "Georgia",
+            fontWeight: 700,
+          }}
+        >
+          “
+        </div>
+
+        <p
+          className="mt-1 text-[14px] leading-[25px] italic text-[#1D2939]"
+          style={{
+            fontFamily: "Poppins, sans-serif",
+          }}
+        >
+          Working with Ayushman Foundation has been incredibly fulfilling. Every
+          patient story motivates me.
+        </p>
+
+        <div className="flex gap-[3px] mt-4 text-[#FFB800] text-[16px]">
+          ★ ★ ★ ★ ★
+        </div>
+
+        <div className="flex items-center mt-6">
+          <img
+            src="/indian-doctor-male.png"
+            alt=""
+            className="w-[50px] h-[50px] rounded-full object-cover border border-[#2F80ED]"
+          />
+
+          <div className="ml-3">
+            <h4
+              className="text-[16px] text-[#101828]"
+              style={{
+                fontFamily: "Poppins, sans-serif",
+                fontWeight: 600,
+              }}
+            >
+              Dr. Rajesh Kumar
+            </h4>
+
+            <p
+              className="text-[13px] text-[#667085] mt-1"
+              style={{ fontFamily: "Poppins, sans-serif" }}
+            >
+              Volunteer Doctor
             </p>
-          </FadeInSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <FadeInSection delay={0}>
-              <TestimonialCard
-                name="Priya Sharma"
-                content="The mobile clinic brought hope to our village. My daughter received life-saving treatment that wouldn't have been possible otherwise. The doctors were so caring and professional."
-                rating={5}
-                avatar="/indian-woman-smiling.png"
-              />
-            </FadeInSection>
-
-            <FadeInSection delay={200}>
-              <TestimonialCard
-                name="Dr. Rajesh Kumar"
-                content="Working with Ayushman Foundation has been incredibly fulfilling. The impact we create together in underserved communities is remarkable. Every patient story motivates me."
-                rating={5}
-                avatar="/indian-doctor-male.png"
-              />
-            </FadeInSection>
-
-            <FadeInSection delay={400}>
-              <TestimonialCard
-                name="Meera Patel"
-                content="The scholarship program changed my life trajectory. I'm now a teacher, giving back to my community just like Ayushman Foundation gave to me. Education truly transforms lives."
-                rating={5}
-                avatar="/indian-female-teacher.png"
-              />
-            </FadeInSection>
           </div>
         </div>
-      </section>
 
-      {/* Enhanced CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-secondary text-primary-foreground relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 relative">
-          <FadeInSection>
-            <Badge variant="secondary" className="mb-4 bg-white/20 text-white border-white/30">
-              Join Our Mission
-            </Badge>
-            <h2 className="heading-secondary text-primary-foreground">Together, We Can Transform Lives</h2>
-            <p className="body-large opacity-90 max-w-2xl mx-auto leading-relaxed">
-              Every contribution, whether time or resources, helps us reach more communities and save more lives. Be
-              part of our mission to create a healthier, more equitable India.
+        <div className="absolute right-[28px] bottom-[35px] opacity-[0.15]">
+          <svg
+            width="55"
+            height="55"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#2F80ED"
+            strokeWidth="1.5"
+          >
+            <path d="M12 21C12 21 4 13.5 4 8.5C4 5.42 6.42 3 9.5 3C11.24 3 12.91 3.81 14 5.08C15.09 3.81 16.76 3 18.5 3C21.58 3 24 5.42 24 8.5C24 13.5 16 21 16 21H12Z" />
+          </svg>
+        </div>
+
+  {/* BLUSH WAVE */}
+<div className="absolute bottom-0 right-0">
+  <svg
+    width="120"
+    height="42"
+    viewBox="0 0 120 42"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <linearGradient
+        id="blueGradient"
+        x1="0"
+        y1="0"
+        x2="120"
+        y2="42"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0%" stopColor="#2563EB" />
+        <stop offset="50%" stopColor="#3B82F6" />
+        <stop offset="100%" stopColor="#93C5FD" />
+      </linearGradient>
+    </defs>
+
+    <path
+      d="M120 42H0C40 42 62 18 120 0V42Z"
+      fill="url(#blueGradient)"
+    />
+  </svg>
+</div>
+      </div>
+
+      {/* CARD 3 */}
+      <div className="relative bg-white rounded-[24px] border border-[#F59E0B] px-[30px] pt-[11px] pb-[26px] overflow-hidden h-[314px]">
+        <div
+          className="text-[#F59E0B] text-[58px] leading-none"
+          style={{
+            fontFamily: "Georgia",
+            fontWeight: 700,
+          }}
+        >
+          “
+        </div>
+
+        <p
+          className="mt-1 text-[14px] leading-[25px] italic text-[#1D2939]"
+          style={{
+            fontFamily: "Poppins, sans-serif",
+          }}
+        >
+          The scholarship program changed my life trajectory. Education truly
+          transforms lives.
+        </p>
+
+        <div className="flex gap-[3px] mt-4 text-[#FFB800] text-[16px]">
+          ★ ★ ★ ★ ★
+        </div>
+
+        <div className="flex items-center mt-6">
+          <img
+            src="/indian-female-teacher.png"
+            alt=""
+            className="w-[50px] h-[50px] rounded-full object-cover border border-[#F59E0B]"
+          />
+
+          <div className="ml-3">
+            <h4
+              className="text-[16px] text-[#101828]"
+              style={{
+                fontFamily: "Poppins, sans-serif",
+                fontWeight: 600,
+              }}
+            >
+              Meera Patel
+            </h4>
+
+            <p
+              className="text-[13px] text-[#667085] mt-1"
+              style={{ fontFamily: "Poppins, sans-serif" }}
+            >
+              Scholarship Alumni
             </p>
-          </FadeInSection>
+          </div>
+        </div>
 
-          <FadeInSection delay={300}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                variant="secondary"
-                className="group hover:scale-105 transition-all duration-200 bg-white text-primary hover:bg-white/90"
-                asChild
+        <div className="absolute right-[28px] bottom-[35px] opacity-[0.15]">
+          <svg
+            width="55"
+            height="55"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#F59E0B"
+            strokeWidth="1.5"
+          >
+            <path d="M4 19.5V4.5C4 3.67 4.67 3 5.5 3H18.5C19.33 3 20 3.67 20 4.5V19.5L12 16L4 19.5Z" />
+          </svg>
+        </div>
+
+    {/* BLUSH WAVE */}
+<div className="absolute bottom-0 right-0">
+  <svg
+    width="120"
+    height="42"
+    viewBox="0 0 120 42"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <linearGradient
+        id="orangeGradient"
+        x1="0"
+        y1="0"
+        x2="120"
+        y2="42"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0%" stopColor="#F59E0B" />
+        <stop offset="50%" stopColor="#FBBF24" />
+        <stop offset="100%" stopColor="#FDE68A" />
+      </linearGradient>
+    </defs>
+
+    <path
+      d="M120 42H0C40 42 62 18 120 0V42Z"
+      fill="url(#orangeGradient)"
+    />
+  </svg>
+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section className="relative w-full overflow-hidden pt-[70px] pb-[60px]">
+
+  {/* ================= MAIN CONTAINER ================= */}
+  <div className="relative z-10 max-w-[1320px] mx-auto px-[60px]">
+
+    {/* ================= TOP AREA ================= */}
+    <div className="flex items-center justify-between gap-[40px]">
+
+      {/* ================= LEFT CONTENT ================= */}
+      <motion.div
+        initial={{ opacity: 0, y: 45 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.9, ease: "easeOut" }}
+        className="max-w-[500px] ml-[20px] relative z-10"
+      >
+
+        {/* BADGE */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="inline-flex items-center gap-2 bg-[#f5ede1] rounded-full px-4 py-2 mb-5"
+        >
+          <Heart
+            className="text-[#d88a1c]"
+            size={14}
+            strokeWidth={2.2}
+          />
+
+          <span
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontSize: "11px",
+              fontWeight: "700",
+              letterSpacing: "1.5px",
+              color: "#d88a1c",
+            }}
+            className="uppercase"
+          >
+            Join Our Mission
+          </span>
+        </motion.div>
+
+        {/* HEADING */}
+        <h2
+          style={{
+            fontFamily: "Georgia, serif",
+            fontSize: "50px",
+            lineHeight: "0.96",
+            fontWeight: "700",
+            letterSpacing: "-1px",
+          }}
+          className="text-[#06163A]"
+        >
+          Together, We Can
+        </h2>
+
+        <h2
+          style={{
+            fontFamily: "Georgia, serif",
+            fontSize: "50px",
+            lineHeight: "0.96",
+            fontWeight: "700",
+            letterSpacing: "-1px",
+          }}
+          className="text-[#d88a1c] mt-1"
+        >
+          Transform Lives
+        </h2>
+
+        {/* LINE */}
+        <div className="flex items-center gap-4 mt-5 mb-5">
+
+          <div className="w-[110px] h-[1px] bg-[#d7a14d]" />
+
+          <Heart
+            className="text-[#d88a1c]"
+            size={15}
+            strokeWidth={2}
+          />
+
+          <div className="w-[110px] h-[1px] bg-[#d7a14d]" />
+        </div>
+
+        {/* PARAGRAPH */}
+        <p
+          style={{
+            fontFamily: "Nunito, sans-serif",
+            fontSize: "15px",
+            lineHeight: "1.8",
+            fontWeight: "500",
+          }}
+          className="text-[#4b5563] max-w-[470px]"
+        >
+          Every contribution, whether time or resources, helps us
+          reach more communities and save more lives. Be part of our
+          mission to create a{" "}
+          <span className="font-[800] text-[#06163A]">
+            healthier, more equitable India.
+          </span>
+        </p>
+
+        {/* BUTTONS */}
+        <div className="flex items-center gap-3 mt-6">
+
+          {/* DONATE */}
+          <Link href="/donate">
+            <motion.button
+              whileHover={{
+                scale: 1.04,
+                y: -4,
+              }}
+              whileTap={{ scale: 0.98 }}
+              className="h-[48px] px-6 rounded-[10px] bg-[#08245c] hover:bg-[#06193d] transition-all duration-300 flex items-center gap-2.5 shadow-md hover:shadow-xl"
+            >
+              <Heart
+                className="text-white"
+                size={17}
+                strokeWidth={2.2}
+              />
+
+              <span
+                style={{
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: "15px",
+                  fontWeight: "700",
+                }}
+                className="text-white"
               >
-                <Link href="/donate">
-                  <Heart className="w-5 h-5 mr-2 group-hover:animate-pulse" />
-                  Make a Donation
-                </Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="group bg-transparent border-white text-white hover:bg-white hover:text-primary transition-all duration-200 hover:scale-105"
-                asChild
+                Make a Donation
+              </span>
+            </motion.button>
+          </Link>
+
+          {/* VOLUNTEER */}
+          <Link href="/volunteer">
+            <motion.button
+              whileHover={{
+                scale: 1.04,
+                y: -4,
+              }}
+              whileTap={{ scale: 0.98 }}
+              className="group h-[48px] px-6 rounded-[10px] border-[1.5px] border-[#08245c] hover:bg-[#08245c] transition-all duration-300 flex items-center gap-2.5"
+            >
+              <Users
+                className="text-[#08245c] group-hover:text-white transition-all"
+                size={17}
+                strokeWidth={2.2}
+              />
+
+              <span
+                style={{
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: "15px",
+                  fontWeight: "700",
+                }}
+                className="text-[#08245c] group-hover:text-white transition-all"
               >
-                <Link href="/volunteer">
-                  <Users className="w-5 h-5 mr-2 group-hover:animate-bounce" />
-                  Become a Volunteer
-                </Link>
-              </Button>
+                Become a Volunteer
+              </span>
+            </motion.button>
+          </Link>
+        </div>
+
+        {/* PEOPLE */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.7 }}
+          className="flex items-center gap-3 mt-6"
+        >
+
+          {/* AVATARS */}
+          <div className="flex items-center">
+
+            <motion.img
+              whileHover={{ scale: 1.1 }}
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=300"
+              alt=""
+              className="w-[40px] h-[40px] rounded-full border-[2px] border-white object-cover"
+            />
+
+            <motion.img
+              whileHover={{ scale: 1.1 }}
+              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=300"
+              alt=""
+              className="w-[40px] h-[40px] rounded-full border-[2px] border-white object-cover -ml-2"
+            />
+
+            <motion.img
+              whileHover={{ scale: 1.1 }}
+              src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=300"
+              alt=""
+              className="w-[40px] h-[40px] rounded-full border-[2px] border-white object-cover -ml-2"
+            />
+
+            <div className="w-[40px] h-[40px] rounded-full bg-[#efefef] border-[2px] border-white -ml-2 flex items-center justify-center">
+              <span
+                style={{
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: "13px",
+                  fontWeight: "700",
+                }}
+                className="text-[#06163A]"
+              >
+                1K+
+              </span>
             </div>
-          </FadeInSection>
-        </div>
-      </section>
+          </div>
+
+          {/* TEXT */}
+          <p
+            style={{
+              fontFamily: "Nunito, sans-serif",
+              fontSize: "13px",
+              lineHeight: "1.5",
+              fontWeight: "600",
+            }}
+            className="text-[#4b5563]"
+          >
+            Join 1,000+ changemakers <br />
+            making a difference every day
+          </p>
+        </motion.div>
+      </motion.div>
+
+      {/* ================= RIGHT IMAGE ================= */}
+      <motion.div
+        animate={{
+          y: [0, -12, 0],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="flex items-center justify-end flex-1"
+      >
+
+        <img
+          src="/images/Transfer1.png"
+          alt="Volunteer"
+          className="relative z-10 w-[560px] object-contain mr-[-70px] mt-[-115px]"
+        />
+      </motion.div>
+    </div>
+  </div>
+</section>
     </div>
   )
 }

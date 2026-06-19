@@ -1,117 +1,340 @@
 import Link from "next/link"
-import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
+import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin,HeartHandshake,Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
 export function Footer() {
   return (
-    <footer className="bg-muted/50 border-t border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Organization Info */}
-          <div className="space-y-4">
-            <Link href="/" className="flex items-center space-x-3">
+ 
+ <footer className="relative bg-[#f8f6f2] overflow-hidden">
+
+      {/* ================= TOP SECTION ================= */}
+      <div className="relative z-10 max-w-[1280px] mx-auto px-[45px] pt-[38px] pb-[32px]">
+
+        <div className="grid grid-cols-4 gap-[32px]">
+
+          {/* ================= LOGO AREA ================= */}
+          <div className="pr-[18px] border-r border-[#e8e2da]">
+
+            <Link href="/" className="flex items-center gap-3">
+
               <img
                 src="/images/ayushman-logo.jpg"
-                alt="Ayushman Foundation logo"
-                className="h-10 w-10 rounded-full object-cover"
+                alt="Ayushman"
+                className="w-[58px] h-[58px] rounded-full object-cover"
               />
+
               <div>
-                <h1 className="font-serif font-bold text-xl text-primary">Ayushman</h1>
-                <p className="text-xs text-muted-foreground -mt-1">Foundation</p>
-              </div>
-            </Link>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Dedicated to providing healthcare and social welfare services to underserved communities across India.
-            </p>
-            <div className="flex space-x-4">
-              <Button variant="ghost" size="sm">
-                <Facebook className="w-4 h-4" />
-              </Button>
-              <Button variant="ghost" size="sm">
-                <Twitter className="w-4 h-4" />
-              </Button>
-              <Button variant="ghost" size="sm">
-                <Instagram className="w-4 h-4" />
-              </Button>
-              <Button variant="ghost" size="sm">
-                <Linkedin className="w-4 h-4" />
-              </Button>
-            </div>
-          </div>
+                <h2
+                  style={{
+                    fontFamily: "Georgia, serif",
+                    fontSize: "24px",
+                    fontWeight: "700",
+                    lineHeight: "1",
+                  }}
+                  className="text-[#08245c]"
+                >
+                  Ayushman
+                </h2>
 
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="font-serif font-semibold text-lg">Quick Links</h3>
-            <ul className="space-y-2">
-              {[
-                { href: "/about", label: "About Us" },
-                { href: "/programs", label: "Our Programs" },
-                { href: "/projects", label: "Projects" },
-                { href: "/volunteer", label: "Volunteer" },
-                { href: "/careers", label: "Careers" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div className="space-y-4">
-            <h3 className="font-serif font-semibold text-lg">Contact Info</h3>
-            <div className="space-y-3">
-              <div className="flex items-start space-x-3">
-                <MapPin className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                <p className="text-muted-foreground text-sm">
-                  Kalinga Vihar, Patrapada,
-                  <br />
-                  Bhubaneswar, Khordha, Odisha, India 751019
+                <p
+                  style={{
+                    fontFamily: "Georgia, serif",
+                    fontSize: "17px",
+                    fontWeight: "700",
+                    lineHeight: "1",
+                  }}
+                  className="text-[#d88a1c] mt-[3px]"
+                >
+                  Foundation
                 </p>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="w-4 h-4 text-primary flex-shrink-0" />
-                <p className="text-muted-foreground text-sm">+91 98531 11010</p>
+            </Link>
+
+            <p
+              style={{
+                fontFamily: "Nunito, sans-serif",
+                fontSize: "14px",
+                lineHeight: "1.8",
+                fontWeight: "500",
+              }}
+              className="text-[#4b5563] mt-4 max-w-[280px]"
+            >
+              Dedicated to providing healthcare and social welfare
+              services to underserved communities across India.
+            </p>
+
+            {/* ================= SOCIAL ================= */}
+            <div className="flex items-center gap-2 mt-5">
+
+              {[
+                Facebook,
+                Twitter,
+                Instagram,
+                Linkedin,
+              ].map((Icon, index) => (
+                <button
+                  key={index}
+                  className="w-[40px] h-[40px] rounded-full bg-[#f4efe8]
+                  hover:bg-[#08245c] transition-all duration-300
+                  flex items-center justify-center group"
+                >
+                  <Icon
+                    size={17}
+                    className="text-[#08245c] group-hover:text-white transition-all"
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* ================= QUICK LINKS ================= */}
+          <div className="pl-[5px] border-r border-[#e8e2da]">
+
+            <h3
+              style={{
+                fontFamily: "Georgia, serif",
+                fontSize: "22px",
+                fontWeight: "700",
+              }}
+              className="text-[#08245c]"
+            >
+              Quick Links
+            </h3>
+
+            <div className="flex flex-col gap-4 mt-5">
+
+              {[
+                "About Us",
+                "Our Programs",
+                "Projects",
+                "Volunteer",
+                "Careers",
+                "News & Updates",
+              ].map((item, index) => (
+                <Link
+                  key={index}
+                  href="#"
+                  className="flex items-center gap-3 group"
+                >
+
+                  <span className="text-[#d88a1c] text-[18px] leading-none">
+                    ›
+                  </span>
+
+                  <span
+                    style={{
+                      fontFamily: "Nunito, sans-serif",
+                      fontSize: "14px",
+                      fontWeight: "600",
+                    }}
+                    className="text-[#374151] group-hover:text-[#08245c] transition-all"
+                  >
+                    {item}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* ================= CONTACT INFO ================= */}
+          <div className="pl-[5px] border-r border-[#e8e2da]">
+
+            <h3
+              style={{
+                fontFamily: "Georgia, serif",
+                fontSize: "22px",
+                fontWeight: "700",
+              }}
+              className="text-[#08245c]"
+            >
+              Contact Info
+            </h3>
+
+            <div className="flex flex-col gap-5 mt-5">
+
+              {/* ADDRESS */}
+              <div className="flex gap-4">
+
+                <div
+                  className="w-[42px] h-[42px] rounded-full
+                  bg-[#f4efe8] flex items-center justify-center shrink-0"
+                >
+                  <MapPin size={17} className="text-[#08245c]" />
+                </div>
+
+                <p
+                  style={{
+                    fontFamily: "Nunito, sans-serif",
+                    fontSize: "14px",
+                    lineHeight: "1.7",
+                    fontWeight: "500",
+                  }}
+                  className="text-[#4b5563]"
+                >
+                  Kalinga Vihar, Patrapada,
+                  <br />
+                  Bhubaneswar, Khordha,
+                  <br />
+                  Odisha, India 751019
+                </p>
               </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-primary flex-shrink-0" />
-                <p className="text-muted-foreground text-sm">info@ayushmanfoundation.in</p>
+
+              {/* PHONE */}
+              <div className="flex items-center gap-4">
+
+                <div
+                  className="w-[42px] h-[42px] rounded-full
+                  bg-[#f4efe8] flex items-center justify-center shrink-0"
+                >
+                  <Phone size={17} className="text-[#08245c]" />
+                </div>
+
+                <p
+                  style={{
+                    fontFamily: "Nunito, sans-serif",
+                    fontSize: "14px",
+                    fontWeight: "500",
+                  }}
+                  className="text-[#4b5563]"
+                >
+                  +91 98531 11010
+                </p>
+              </div>
+
+              {/* EMAIL */}
+              <div className="flex items-center gap-4">
+
+                <div
+                  className="w-[42px] h-[42px] rounded-full
+                  bg-[#f4efe8] flex items-center justify-center shrink-0"
+                >
+                  <Mail size={17} className="text-[#08245c]" />
+                </div>
+
+                <p
+                  style={{
+                    fontFamily: "Nunito, sans-serif",
+                    fontSize: "14px",
+                    fontWeight: "500",
+                  }}
+                  className="text-[#4b5563]"
+                >
+                  info@ayushmanfoundation.in
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Newsletter */}
-          <div className="space-y-4">
-            <h3 className="font-serif font-semibold text-lg">Stay Updated</h3>
-            <p className="text-muted-foreground text-sm">
-              Subscribe to our newsletter for updates on our programs and impact.
+          {/* ================= NEWSLETTER ================= */}
+          <div className="pl-[5px]">
+
+            <h3
+              style={{
+                fontFamily: "Georgia, serif",
+                fontSize: "22px",
+                fontWeight: "700",
+              }}
+              className="text-[#08245c]"
+            >
+              Stay Updated
+            </h3>
+
+            <p
+              style={{
+                fontFamily: "Nunito, sans-serif",
+                fontSize: "14px",
+                lineHeight: "1.8",
+                fontWeight: "500",
+              }}
+              className="text-[#4b5563] mt-4"
+            >
+              Subscribe to our newsletter for
+              updates on our programs and impact.
             </p>
-            <div className="space-y-2">
-              <Input type="email" placeholder="Enter your email" className="w-full" />
-              <Button className="w-full" size="sm">
+
+            {/* ================= INPUT ================= */}
+            <div className="mt-4">
+
+              <div
+                className="h-[46px] rounded-[12px]
+                border border-[#e2e5ea]
+                bg-white px-4
+                flex items-center gap-3"
+              >
+
+                <Mail size={17} className="text-[#08245c]" />
+
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="w-full bg-transparent outline-none
+                  text-[14px] text-[#08245c]
+                  placeholder:text-[#9ca3af]"
+                />
+              </div>
+
+              <button
+                className="w-full h-[46px] rounded-[12px]
+                bg-[#08245c] hover:bg-[#06193d]
+                transition-all duration-300
+                text-white font-[700] text-[14px]
+                mt-3"
+              >
                 Subscribe
-              </Button>
+              </button>
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="border-t border-border mt-8 pt-8 text-center">
-          <p className="text-muted-foreground text-sm">
-            © 2024 Ayushman Foundation. All rights reserved. |
-            <Link href="/privacy" className="hover:text-primary ml-1">
+      {/* ================= BOTTOM ================= */}
+      <div className="bg-[#001a57]">
+
+        <div
+          className="max-w-[1280px] mx-auto px-[45px]
+          h-[58px] flex items-center justify-between"
+        >
+
+          <p
+            style={{
+              fontFamily: "Nunito, sans-serif",
+              fontSize: "13px",
+              fontWeight: "600",
+            }}
+            className="text-white"
+          >
+            © 2024 Ayushman Foundation. All rights reserved.
+          </p>
+
+          <div className="flex items-center gap-5">
+
+            <Link
+              href="/privacy"
+              className="text-white hover:text-[#d88a1c] transition-all"
+              style={{
+                fontFamily: "Nunito, sans-serif",
+                fontSize: "13px",
+                fontWeight: "600",
+              }}
+            >
               Privacy Policy
-            </Link>{" "}
-            |
-            <Link href="/terms" className="hover:text-primary ml-1">
+            </Link>
+
+            <span className="text-white/40">|</span>
+
+            <Link
+              href="/terms"
+              className="text-white hover:text-[#d88a1c] transition-all"
+              style={{
+                fontFamily: "Nunito, sans-serif",
+                fontSize: "13px",
+                fontWeight: "600",
+              }}
+            >
               Terms of Service
             </Link>
-          </p>
+          </div>
         </div>
       </div>
     </footer>
