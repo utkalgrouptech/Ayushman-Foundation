@@ -172,11 +172,7 @@ export function Footer() {
                   }}
                   className="text-[#4b5563]"
                 >
-                  Kalinga Vihar, Patrapada,
-                  <br />
-                  Bhubaneswar, Khordha,
-                  <br />
-                  Odisha, India 751019
+                  K5/475, Arya Surya Enclave, Fourth Floor, Kalinga Vihar, Patrapada, Bhubaneswar, Khurda, Odisha – 751019
                 </p>
               </div>
 

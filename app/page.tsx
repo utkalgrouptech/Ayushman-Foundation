@@ -792,7 +792,7 @@ export default function HomePage() {
     </div>
   </div>
 
-  <h2 className="text-3xl md:text-4xl font-bold text-[#0b1633] leading-tight">
+  <h2 className="text-3xl md:text-3xl font-bold text-[#0b1633] leading-tight">
     Empowering Communities Through Sustainable Development
   </h2>
 
@@ -813,7 +813,7 @@ export default function HomePage() {
     icon: Users,
     title: "Women Empowerment & Sustainable Livelihoods",
     description:
-      "Formation and handholding of Self-Help Groups (SHGs) and Women-led Producer Companies. Promotion of traditional crafts, applique & embroidery work, jute handicrafts, and GI-tagged products.",
+      "Formation and nurturin of Self-Help Groups (SHGs) and Women-led Producer Companies.Revival and upgradation of traditional crafts: Appliqué & Embroidery, Jute handicrafts, and GI-tagged products. ",
     stats: "SHGs",
     sub: "women-led initiatives",
     color: "#C62828",
@@ -825,7 +825,7 @@ export default function HomePage() {
     icon: Briefcase,
     title: "Skill Development & Entrepreneurship",
     description:
-      "Skill upgradation, design development, branding, entrepreneurship support, and direct market linkages to create sustainable livelihood opportunities.",
+      "Market-relevant vocational training ,Entrepreneurship development programs,Successful job placement support",
     stats: "Skills",
     sub: "training & enterprise support",
     color: "#2457C5",
@@ -837,31 +837,31 @@ export default function HomePage() {
     icon: HeartPulse,
     title: "Health, Nutrition & Hygiene",
     description:
-      "Community health awareness, mobile health camps, menstrual hygiene management, nutrition support programs, and community wellness initiatives.",
+      "Community health awareness, mobile health camps, menstrual hygiene management, nutrition support & kitchen garden initiatives,Waste-to-Wealth programs",
     stats: "Health",
     sub: "well-being programs",
     color: "#8E24AA",
     bg: "#F7EEFF",
-    image: "/images/health.jpg",
+    image: "/images/health1.png",
   },
 
   {
     icon: GraduationCap,
     title: "Education & Youth Development",
     description:
-      "Educational support for underprivileged children, digital literacy initiatives, youth development, and learning opportunities.",
+      "Support to underprivileged children,Digital literacy for youth and women",
     stats: "Youth",
     sub: "education support",
     color: "#2F7D32",
     bg: "#EDF7EA",
-    image: "/images/education.jpg",
+    image: "/images/Education1.jpeg",
   },
 
   {
     icon: Leaf,
     title: "Environment & Climate Action",
     description:
-      "Tree plantation drives, waste management, cleanliness campaigns, community kitchen gardens, and climate-resilient livelihood models.",
+      "Massive tree plantations,Cleanliness drives & waste management,Climate-resilient livelihood models",
     stats: "Green",
     sub: "environment initiatives",
     color: "#0F9D58",
@@ -873,12 +873,12 @@ export default function HomePage() {
     icon: Building2,
     title: "Institutional Building",
     description:
-      "Strong expertise in convergence with Government schemes including MSME, NABARD, TRIFED, ORMAS, PM Vishwakarma, GeM and other development programs.",
+      "Strengthening community institutions,Convergence with government schemes (NABARD, MSME, TRIFED, ORMAS, PM Vishwakarma, etc.)",
     stats: "Govt",
     sub: "institutional partnerships",
     color: "#EA7B16",
     bg: "#FFF3EA",
-    image: "/images/institution.jpg",
+    image: "/images/community1.jpeg",
   },
 ].map((program, index) => (
         <FadeInSection key={index} delay={index * 100}>
@@ -1198,7 +1198,7 @@ export default function HomePage() {
         className="inline-flex items-center justify-center h-[38px] px-4 rounded-full bg-[#EAF5EE] text-[#198754] text-[13px] font-medium mb-4"
         style={{ fontFamily: "Poppins, sans-serif" }}
       >
-        Community Voices
+       Community Impact
       </div>
 
       <h2
@@ -1208,15 +1208,14 @@ export default function HomePage() {
           fontWeight: 700,
         }}
       >
-        Stories of Transformation
+       Real Voices, Real Change
       </h2>
 
       <p
         className="max-w-[760px] mx-auto mt-4 text-[15px] leading-[30px] text-[#667085]"
         style={{ fontFamily: "Poppins, sans-serif" }}
       >
-        Real stories from the communities and volunteers whose lives have been
-        transformed through our programs.
+        “Ayushman didn’t just give us skills — they gave us confidence and market access.” 
       </p>
     </div>
 
@@ -1240,8 +1239,7 @@ export default function HomePage() {
             fontFamily: "Poppins, sans-serif",
           }}
         >
-          The mobile clinic brought hope to our village. My daughter received
-          life-saving treatment that wouldn't have been possible otherwise.
+         From a daily wage laborer to a successful appliqué entrepreneur earning ₹18,000–22,000/month.
         </p>
 
         <div className="flex gap-[3px] mt-4 text-[#FFB800] text-[16px]">
@@ -1249,11 +1247,22 @@ export default function HomePage() {
         </div>
 
         <div className="flex items-center mt-6">
-          <img
-            src="/indian-woman-smiling.png"
-            alt=""
-            className="w-[50px] h-[50px] rounded-full object-cover border border-[#23B26D]"
-          />
+          <div className="w-[50px] h-[50px] rounded-full border border-[#23B26D] bg-[#F2F4F7] flex items-center justify-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 text-[#98A2B3]"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={1.8}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15.75 6.75a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 19.5a7.5 7.5 0 0115 0"
+      />
+    </svg>
+  </div>
 
           <div className="ml-3">
             <h4
@@ -1263,14 +1272,14 @@ export default function HomePage() {
                 fontWeight: 600,
               }}
             >
-              Priya Sharma
+              Sasmita’s
             </h4>
 
             <p
               className="text-[13px] text-[#667085] mt-1"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
-              Beneficiary
+             Story
             </p>
           </div>
         </div>
@@ -1349,11 +1358,22 @@ export default function HomePage() {
         </div>
 
         <div className="flex items-center mt-6">
-          <img
-            src="/indian-doctor-male.png"
-            alt=""
-            className="w-[50px] h-[50px] rounded-full object-cover border border-[#2F80ED]"
-          />
+         <div className="w-[50px] h-[50px] rounded-full border border-[#23B26D] bg-[#F2F4F7] flex items-center justify-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 text-[#98A2B3]"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={1.8}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15.75 6.75a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 19.5a7.5 7.5 0 0115 0"
+      />
+    </svg>
+  </div>
 
           <div className="ml-3">
             <h4
@@ -1363,14 +1383,14 @@ export default function HomePage() {
                 fontWeight: 600,
               }}
             >
-              Dr. Rajesh Kumar
+               Rajesh Kumar
             </h4>
 
             <p
               className="text-[13px] text-[#667085] mt-1"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
-              Volunteer Doctor
+              Story
             </p>
           </div>
         </div>
@@ -1447,11 +1467,22 @@ export default function HomePage() {
         </div>
 
         <div className="flex items-center mt-6">
-          <img
-            src="/indian-female-teacher.png"
-            alt=""
-            className="w-[50px] h-[50px] rounded-full object-cover border border-[#F59E0B]"
-          />
+         <div className="w-[50px] h-[50px] rounded-full border border-[#23B26D] bg-[#F2F4F7] flex items-center justify-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 text-[#98A2B3]"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={1.8}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15.75 6.75a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 19.5a7.5 7.5 0 0115 0"
+      />
+    </svg>
+  </div>
 
           <div className="ml-3">
             <h4
@@ -1468,7 +1499,7 @@ export default function HomePage() {
               className="text-[13px] text-[#667085] mt-1"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
-              Scholarship Alumni
+              Story
             </p>
           </div>
         </div>
