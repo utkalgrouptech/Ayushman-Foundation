@@ -1,3 +1,5 @@
+"use client";
+
 import { FadeInSection } from "@/components/fade-in-section"
 import { AnimatedCounter } from "@/components/animated-counter"
 import { Button } from "@/components/ui/button"
@@ -39,7 +41,8 @@ import {
   Flame,
 } from "lucide-react"
 import Link from "next/link"
-
+import { motion } from "framer-motion";
+import Image from "next/image"
 export default function ProgramsPage() {
   const sectors = [
     {
@@ -279,287 +282,64 @@ export default function ProgramsPage() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-8">
-            <FadeInSection>
-              <Badge variant="secondary" className="mb-4">
-                <Target className="w-3 h-3 mr-1" />
-                Our Programs & Initiatives
-              </Badge>
-              <h1 className="heading-primary text-foreground">
-                Comprehensive Solutions for
-                <span className="text-primary block">Community Transformation</span>
-              </h1>
-              <p className="body-large text-muted-foreground max-w-3xl mx-auto">
-                Our integrated approach addresses multiple development needs through evidence-based programs designed to create lasting, sustainable change in underserved communities.
-              </p>
-            </FadeInSection>
-          </div>
-        </div>
-      </section>
 
-      {/* Sectors of Focus */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInSection className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="mb-4">
-              Sectors of Focus
-            </Badge>
-            <h2 className="heading-secondary">Our Key Focus Areas</h2>
-            <p className="body-large text-muted-foreground max-w-2xl mx-auto">
-              We work across multiple sectors to address the diverse needs of underserved communities.
-            </p>
-          </FadeInSection>
+<section className="relative h-[350px] md:h-[450px] overflow-hidden">
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {sectors.map((sector, index) => (
-              <FadeInSection key={index} delay={index * 150}>
-                <Card className="group hover:shadow-lg transition-all duration-300 border-0 bg-card/50 h-full">
-                  <CardContent className="p-6 space-y-4">
-                    <div className="flex items-start justify-between">
-                      <div className={`w-12 h-12 ${sector.bgColor} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                        <sector.icon className={`w-6 h-6 ${sector.color}`} />
-                      </div>
-                      <TrendingUp className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
-                    </div>
-                    <div>
-                      <h3 className="font-serif font-semibold text-lg group-hover:text-primary transition-colors duration-300">
-                        {sector.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed mt-2">
-                        {sector.description}
-                      </p>
-                    </div>
-                    <div className="grid grid-cols-3 gap-2 text-xs pt-4 border-t border-border">
-                      <div>
-                        <div className="font-bold text-primary">{sector.stats.beneficiaries}</div>
-                        <div className="text-muted-foreground">Beneficiaries</div>
-                      </div>
-                      <div>
-                        <div className="font-bold text-primary">{sector.stats.locations}</div>
-                        <div className="text-muted-foreground">Locations</div>
-                      </div>
-                      <div>
-                        <div className="font-bold text-primary">{sector.stats.programs}</div>
-                        <div className="text-muted-foreground">Programs</div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </FadeInSection>
-            ))}
-          </div>
-        </div>
-      </section>
+  <Image
+    src="/images/Aboutusbnr.png"
+    alt="About Us"
+    fill
+    priority
+    className="object-cover"
+  />
 
-      {/* Services Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInSection className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="mb-4">
-              Our Services
-            </Badge>
-            <h2 className="heading-secondary">How We Serve Communities</h2>
-            <p className="body-large text-muted-foreground max-w-2xl mx-auto">
-              At Ayushman Foundation, we are dedicated to creating lasting change through a range of health and community support services.
-            </p>
-          </FadeInSection>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/55" />
 
-          <Tabs defaultValue="medical-camps" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-12">
-              {services.map((service) => (
-                <TabsTrigger key={service.id} value={service.id} className="flex items-center space-x-2">
-                  <service.icon className="w-4 h-4" />
-                  <span className="hidden sm:inline">{service.title.split(" ")[0]}</span>
-                </TabsTrigger>
-              ))}
-            </TabsList>
+  {/* Content */}
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.8 }}
+    className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 z-10"
+  >
+    {/* Heading */}
+    <motion.h1
+      initial={{ letterSpacing: "20px", opacity: 0 }}
+      animate={{ letterSpacing: "0px", opacity: 1 }}
+      transition={{ duration: 1.2 }}
+      className="text-4xl md:text-6xl font-bold mb-4"
+    >
+      Our Programs
+    </motion.h1>
 
-            {services.map((service) => (
-              <TabsContent key={service.id} value={service.id}>
-                <FadeInSection>
-                  <div className="space-y-12">
-                    {/* Service Overview */}
-                    <Card className="border-0 bg-gradient-to-br from-card to-muted/20">
-                      <CardContent className="p-8">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                          <div className="space-y-6">
-                            <div className="flex items-center space-x-4">
-                              <div
-                                className={`w-16 h-16 ${service.bgColor} rounded-xl flex items-center justify-center`}
-                              >
-                                <service.icon className={`w-8 h-8 ${service.color}`} />
-                              </div>
-                              <div>
-                                <h3 className="heading-tertiary">{service.title}</h3>
-                                <p className="text-muted-foreground">{service.description}</p>
-                              </div>
-                            </div>
-                            <div className="flex flex-col sm:flex-row gap-4">
-                              <Button asChild>
-                                <Link href="/volunteer">
-                                  <Users className="w-4 h-4 mr-2" />
-                                  Get Involved
-                                </Link>
-                              </Button>
-                              <Button variant="outline" asChild>
-                                <Link href="/contact">
-                                  <ArrowRight className="w-4 h-4 mr-2" />
-                                  Learn More
-                                </Link>
-                              </Button>
-                            </div>
-                          </div>
-                          <div className="grid grid-cols-3 gap-4">
-                            <div className="text-center p-4 bg-background rounded-lg">
-                              <div className="text-2xl font-bold text-primary">
-                                <AnimatedCounter
-                                  end={Number.parseInt(service.stats.beneficiaries.replace(/\D/g, ""))}
-                                  suffix={service.stats.beneficiaries.replace(/\d/g, "")}
-                                />
-                              </div>
-                              <div className="text-sm text-muted-foreground">Beneficiaries</div>
-                            </div>
-                            <div className="text-center p-4 bg-background rounded-lg">
-                              <div className="text-2xl font-bold text-primary">
-                                <AnimatedCounter
-                                  end={Number.parseInt(service.stats.locations.replace(/\D/g, ""))}
-                                  suffix={service.stats.locations.replace(/\d/g, "")}
-                                />
-                              </div>
-                              <div className="text-sm text-muted-foreground">Locations</div>
-                            </div>
-                            <div className="text-center p-4 bg-background rounded-lg">
-                              <div className="text-2xl font-bold text-primary">
-                                <AnimatedCounter
-                                  end={Number.parseInt(Object.values(service.stats)[2].replace(/\D/g, ""))}
-                                  suffix={Object.values(service.stats)[2].replace(/\d/g, "")}
-                                />
-                              </div>
-                              <div className="text-sm text-muted-foreground">
-                                {Object.keys(service.stats)[2].charAt(0).toUpperCase() + Object.keys(service.stats)[2].slice(1)}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </FadeInSection>
-              </TabsContent>
-            ))}
-          </Tabs>
-        </div>
-      </section>
+    {/* Animated Line */}
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: 80 }}
+      transition={{ delay: 0.5, duration: 0.8 }}
+      className="h-[2px] bg-primary mb-5"
+    />
 
-      {/* How We Work Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInSection className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="mb-4">
-              Our Approach
-            </Badge>
-            <h2 className="heading-secondary">How We Work</h2>
-            <p className="body-large text-muted-foreground max-w-2xl mx-auto">
-              Our work is driven by empathy, guided by research, and supported by a strong network of volunteers and partners.
-            </p>
-          </FadeInSection>
+    {/* Breadcrumb */}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.8, duration: 0.8 }}
+      className="flex items-center justify-center gap-2 text-white/80"
+    >
+      <Link href="/" className="hover:text-primary transition">
+        Home
+      </Link>
+      <span>/</span>
+      <span>Programs</span>
+    </motion.div>
+  </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-            {howWeWork.map((step, index) => (
-              <FadeInSection key={index} delay={index * 150}>
-                <Card className="group hover:shadow-lg transition-all duration-300 border-0 bg-card/50 text-center h-full">
-                  <CardContent className="p-6 space-y-4 flex flex-col h-full">
-                    <div className="w-12 h-12 mx-auto bg-primary/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-xl font-bold text-primary">{step.step}</span>
-                    </div>
-                    <div className="w-12 h-12 mx-auto bg-primary/10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <step.icon className="w-6 h-6 text-primary" />
-                    </div>
-                    <div className="flex-grow">
-                      <h4 className="font-serif font-semibold text-lg mb-2">{step.title}</h4>
-                      <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </FadeInSection>
-            ))}
-          </div>
-        </div>
-      </section>
+</section>
 
-      {/* Core Objectives Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInSection className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="mb-4">
-              Core Objectives
-            </Badge>
-            <h2 className="heading-secondary">Ayushman Village Program Focus</h2>
-            <p className="body-large text-muted-foreground max-w-2xl mx-auto">
-              Our program focuses on critical areas for the growth and well-being of communities.
-            </p>
-          </FadeInSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {coreObjectives.map((objective, index) => (
-              <FadeInSection key={index} delay={index * 150}>
-                <Card className="group hover:shadow-lg transition-all duration-300 border-0 bg-card/50 h-full">
-                  <CardContent className="p-6 space-y-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <objective.icon className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="font-serif font-semibold text-lg group-hover:text-primary transition-colors duration-300">
-                        {objective.title}
-                      </h4>
-                      <p className="text-muted-foreground text-sm leading-relaxed mt-2">
-                        {objective.description}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </FadeInSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-secondary text-primary-foreground">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-          <FadeInSection>
-            <h2 className="heading-secondary text-primary-foreground">Ready to Make a Difference?</h2>
-            <p className="body-large opacity-90 max-w-2xl mx-auto">
-              Join thousands of supporters who are helping us transform communities across India. Every contribution counts.
-            </p>
-          </FadeInSection>
-
-          <FadeInSection delay={300}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90" asChild>
-                <Link href="/donate">
-                  <Heart className="w-5 h-5 mr-2" />
-                  Support Our Programs
-                </Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-transparent border-white text-white hover:bg-white hover:text-primary"
-                asChild
-              >
-                <Link href="/volunteer">
-                  <Users className="w-5 h-5 mr-2" />
-                  Volunteer Today
-                </Link>
-              </Button>
-            </div>
-          </FadeInSection>
-        </div>
-      </section>
+   
     </div>
   )
 }

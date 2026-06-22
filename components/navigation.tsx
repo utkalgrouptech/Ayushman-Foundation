@@ -3,22 +3,50 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Phone, Heart } from "lucide-react"
+import { Menu, X, Phone, Heart , ChevronDown} from "lucide-react"
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
 
-  const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About Us" },
-    { href: "/programs", label: "Programs" },
-    { href: "/blog", label: "Blog" },
-    { href: "/gallery", label: "Gallery" },
-     { href: "/", label: "Report" },
+ const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About Us" },
+  { href: "/programs", label: "Programs" },
 
-        { href: "/membership", label: "Become A Member" },
-           
-  ]
+   {
+    label: "Report",
+    submenu: [
+      {
+        href: "/annual-report",
+        label: "Annual Report",
+      },
+      {
+        href: "/company-profile",
+        label: "Profile",
+      },
+    ],
+  },
+
+   {
+    label: "Gallery",
+    submenu: [
+      {
+        href: "/gallery",
+        label: "Image Gallery",
+      },
+      {
+        href: "/video",
+        label: "Video Gallery",
+      },
+    ],
+  },
+
+  
+
+ 
+
+  { href: "/membership", label: "Become A Member" },
+]
 
   return (
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
@@ -37,18 +65,38 @@ export function Navigation() {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
+         <div className="hidden md:flex items-center space-x-8">
+  {navItems.map((item, index) =>
+    item.submenu ? (
+      <div key={index} className="relative group">
+        <button className="flex items-center gap-1 font-medium text-foreground hover:text-primary transition-colors">
+          {item.label}
+          <ChevronDown className="w-4 h-4" />
+        </button>
+
+        <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+          {item.submenu.map((subItem) => (
+            <Link
+              key={subItem.href}
+              href={subItem.href}
+              className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary"
+            >
+              {subItem.label}
+            </Link>
+          ))}
+        </div>
+      </div>
+    ) : (
+      <Link
+        key={item.href}
+        href={item.href}
+        className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+      >
+        {item.label}
+      </Link>
+    )
+  )}
+</div>
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
@@ -78,16 +126,37 @@ export function Navigation() {
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-card border-t border-border">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="block px-3 py-2 text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
+            {navItems.map((item, index) =>
+  item.submenu ? (
+    <div key={index}>
+      <div className="px-3 py-2 font-medium text-foreground">
+        {item.label}
+      </div>
+
+      <div className="ml-4 border-l border-gray-200">
+        {item.submenu.map((subItem) => (
+          <Link
+            key={subItem.href}
+            href={subItem.href}
+            className="block px-3 py-2 text-sm text-muted-foreground hover:text-primary"
+            onClick={() => setIsOpen(false)}
+          >
+            {subItem.label}
+          </Link>
+        ))}
+      </div>
+    </div>
+  ) : (
+    <Link
+      key={item.href}
+      href={item.href}
+      className="block px-3 py-2 text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors duration-200"
+      onClick={() => setIsOpen(false)}
+    >
+      {item.label}
+    </Link>
+  )
+)}
               <div className="flex flex-col space-y-2 px-3 pt-4">
                 <Button variant="outline" size="sm" asChild>
                   <Link href="/contact">

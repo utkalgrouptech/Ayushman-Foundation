@@ -1,3 +1,4 @@
+"use client";
 import { FadeInSection } from "@/components/fade-in-section"
 import { AnimatedCounter } from "@/components/animated-counter"
 import { Button } from "@/components/ui/button"
@@ -19,7 +20,7 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-
+import { motion } from "framer-motion";
 export default function AboutPage() {
   const milestones = [
     {
@@ -126,311 +127,716 @@ const leadership = [
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-8">
-            <FadeInSection>
-              <Badge variant="secondary" className="mb-4">
-                <Award className="w-3 h-3 mr-1" />
-                About Ayushman Foundation
-              </Badge>
-              <h1 className="heading-primary text-foreground">
-                Transforming Healthcare
-                <span className="text-primary block">One Community at a Time</span>
-              </h1>
-              <p className="body-large text-muted-foreground max-w-3xl mx-auto">
-               Ayushman Foundation is a non-profit organization dedicated to improving the lives of
- underserved communities across India by bridging the gap between healthcare,
- education, and social development. Established with a vision to create lasting impact,
- our foundation works at the grassroots level to ensure that every individual has the
- opportunity to lead a healthy, empowered, and dignified life.
-              </p>
-            </FadeInSection>
 
-            <FadeInSection delay={300}>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">
-                    <AnimatedCounter end={50} suffix="K+" />
-                  </div>
-                  <div className="text-sm text-muted-foreground font-medium">Lives Transformed</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">
-                    <AnimatedCounter end={200} suffix="+" />
-                  </div>
-                  <div className="text-sm text-muted-foreground font-medium">Villages Served</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">
-                    <AnimatedCounter end={8} suffix="" />
-                  </div>
-                  <div className="text-sm text-muted-foreground font-medium">States Covered</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">
-                    <AnimatedCounter end={15} suffix="+" />
-                  </div>
-                  <div className="text-sm text-muted-foreground font-medium">Years of Service</div>
+<section className="relative h-[350px] md:h-[450px] overflow-hidden">
+
+  <Image
+    src="/images/Aboutusbnr.png"
+    alt="About Us"
+    fill
+    priority
+    className="object-cover"
+  />
+
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/55" />
+
+  {/* Content */}
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.8 }}
+    className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 z-10"
+  >
+    {/* Heading */}
+    <motion.h1
+      initial={{ letterSpacing: "20px", opacity: 0 }}
+      animate={{ letterSpacing: "0px", opacity: 1 }}
+      transition={{ duration: 1.2 }}
+      className="text-4xl md:text-6xl font-bold mb-4"
+    >
+      About Us
+    </motion.h1>
+
+    {/* Animated Line */}
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: 80 }}
+      transition={{ delay: 0.5, duration: 0.8 }}
+      className="h-[2px] bg-primary mb-5"
+    />
+
+    {/* Breadcrumb */}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.8, duration: 0.8 }}
+      className="flex items-center justify-center gap-2 text-white/80"
+    >
+      <Link href="/" className="hover:text-primary transition">
+        Home
+      </Link>
+      <span>/</span>
+      <span>About Us</span>
+    </motion.div>
+  </motion.div>
+
+</section>
+
+
+<section className="py-16 md:py-20 bg-white">
+<div className="max-w-5xl mx-auto px-6">
+
+    <div className="text-center mb-8">
+      <span className="text-primary font-semibold uppercase tracking-[3px]">
+        About Us
+      </span>
+
+      <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3">
+        Ayushman Foundation
+      </h2>
+
+      <div className="w-20 h-1 bg-primary mx-auto mt-5 rounded-full"></div>
+    </div>
+
+     <div className="space-y-4 text-lg leading-8 text-gray-600">
+
+      <p>
+        <span className="font-semibold text-primary">
+          Ayushman Foundation
+        </span>{" "}
+        is a dynamic, non-profit organization registered under the{" "}
+        <span className="font-semibold text-primary">
+          Section 8 Company Act, 2013
+        </span>{" "}
+        dedicated to the holistic empowerment of marginalized and underserved
+        communities across Odisha and beyond.
+      </p>
+
+      <p>
+        Established with a vision to create{" "}
+        <span className="font-semibold text-primary">
+          sustainable, dignified, and empowered lives
+        </span>
+        , the Foundation works at the grassroots level with a strong focus on{" "}
+        <span className="font-semibold text-primary">
+          women empowerment
+        </span>
+        ,{" "}
+        <span className="font-semibold text-primary">
+          sustainable livelihoods
+        </span>
+        ,{" "}
+        <span className="font-semibold text-primary">
+          skill development
+        </span>
+        ,{" "}
+        <span className="font-semibold text-primary">
+          health & nutrition
+        </span>
+        ,{" "}
+        <span className="font-semibold text-primary">
+          education
+        </span>
+        , and{" "}
+        <span className="font-semibold text-primary">
+          environmental conservation
+        </span>
+        .
+      </p>
+
+      <p>
+        Ayushman Foundation adopts a{" "}
+        <span className="font-semibold text-primary">
+          participatory, community-centric approach
+        </span>{" "}
+        that combines traditional knowledge with modern techniques,
+        innovation, and market linkages to ensure{" "}
+        <span className="font-semibold text-primary">
+          long-term impact and self-reliance
+        </span>
+        .
+      </p>
+
+    </div>
+  </div>
+</section>
+<section className="py-12 md:py-16 bg-white">
+  <div className="max-w-6xl mx-auto px-6">
+
+    {/* Heading */}
+<div className="text-center mb-10">
+      <span className="text-primary font-semibold uppercase tracking-[3px]">
+        Purpose & Direction
+      </span>
+
+      <h2 className="text-4xl md:text-5xl font-bold mt-3">
+        Vision & Mission
+      </h2>
+
+      <div className="w-20 h-1 bg-primary mx-auto mt-5 rounded-full"></div>
+    </div>
+
+    <div className="relative">
+
+      {/* Center Line */}
+      <div className="hidden lg:block absolute left-1/2 top-0 h-full w-[2px] bg-primary/20 -translate-x-1/2"></div>
+
+      <div className="space-y-4">
+
+        {/* Vision */}
+        <FadeInSection>
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+
+            <div className="bg-primary/5 border border-primary/10 rounded-[24px] p-6 lg:text-right">
+              <div className="flex lg:justify-end mb-5">
+                <div className="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center">
+                  <Eye className="w-7 h-7" />
                 </div>
               </div>
-            </FadeInSection>
+
+              <h3 className="text-3xl font-bold text-primary mb-4">
+                Our Vision
+              </h3>
+
+              <p className="text-gray-600 leading-8">
+                To build an equitable and inclusive society where every
+                individual, especially
+                <span className="font-semibold text-primary">
+                  {" "}women, youth and tribal communities
+                </span>,
+                has equal access to opportunities for growth,
+                dignity and prosperity.
+              </p>
+            </div>
+
+            <div></div>
+
+          </div>
+        </FadeInSection>
+
+        {/* Mission */}
+        <FadeInSection delay={200}>
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+
+            <div></div>
+
+            <div className="bg-secondary/5 border border-secondary/10 rounded-[24px] p-6">
+              <div className="mb-5">
+                <div className="w-14 h-14 rounded-full bg-secondary text-white flex items-center justify-center">
+                  <Target className="w-7 h-7" />
+                </div>
+              </div>
+
+              <h3 className="text-3xl font-bold text-secondary mb-4">
+                Our Mission
+              </h3>
+
+              <p className="text-gray-600 leading-8">
+                To empower marginalized communities through integrated
+                interventions in
+                <span className="font-semibold text-secondary">
+                  {" "}livelihood promotion, skill enhancement,
+                  health & hygiene, education and environmental sustainability
+                </span>,
+                while fostering strong community institutions and
+                market-driven enterprises.
+              </p>
+            </div>
+
+          </div>
+        </FadeInSection>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section className="py-20 bg-[#F7F9F8]">
+  <div className="max-w-7xl mx-auto px-6 lg:px-8">
+
+    {/* Heading */}
+    <div className="text-center mb-14">
+      <span className="text-[#1F5E4E] font-semibold uppercase tracking-[3px]">
+        Geographic Presence
+      </span>
+
+      <h2 className="text-4xl md:text-5xl font-bold mt-3 text-gray-900">
+        Where We Work
+      </h2>
+
+      <div className="w-20 h-1 bg-[#C7A86B] mx-auto mt-5 rounded-full"></div>
+    </div>
+
+    <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+      {/* Map Section */}
+      <div>
+        <div className="bg-white rounded-[28px] p-5 shadow-xl border border-[#E6ECE9]">
+          <Image
+            src="/images/odisha map.png"
+            alt="Ayushman Foundation Geographic Presence"
+            width={800}
+            height={600}
+            className="w-full h-auto rounded-2xl"
+          />
+        </div>
+
+        {/* Stats */}
+        <div className="grid grid-cols-3 gap-4 mt-6">
+          <div className="bg-white rounded-2xl p-5 text-center shadow-md border border-[#E6ECE9]">
+            <h4 className="text-3xl font-bold text-[#1F5E4E]">6</h4>
+            <p className="text-sm text-gray-500 mt-1">
+              Districts
+            </p>
+          </div>
+
+          <div className="bg-white rounded-2xl p-5 text-center shadow-md border border-[#E6ECE9]">
+            <h4 className="text-3xl font-bold text-[#1F5E4E]">2</h4>
+            <p className="text-sm text-gray-500 mt-1">
+              Emerging States
+            </p>
+          </div>
+
+          <div className="bg-white rounded-2xl p-5 text-center shadow-md border border-[#E6ECE9]">
+            <h4 className="text-xl font-bold text-[#1F5E4E]">
+              PVTG
+            </h4>
+            <p className="text-sm text-gray-500 mt-1">
+              Focus Areas
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* Content */}
+      <div className="space-y-10">
+
+        {/* Core Areas */}
+        <div>
+          <h3 className="text-2xl font-bold text-[#1F5E4E] mb-5">
+            Core Operational Areas (Odisha)
+          </h3>
+
+          <div className="flex flex-wrap gap-3">
+            {[
+              "Keonjhar",
+              "Nayagarh",
+              "Khordha",
+              "Kendrapara",
+              "Dhenkanal",
+              "Cuttack",
+            ].map((district) => (
+              <span
+                key={district}
+                className="px-5 py-2.5 rounded-full bg-[#EEF5F2] text-[#1F5E4E] border border-[#D8E7E0] font-medium"
+              >
+                {district}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Emerging Areas */}
+        <div>
+          <h3 className="text-2xl font-bold text-[#1F5E4E] mb-5">
+            Emerging Areas
+          </h3>
+
+          <div className="flex flex-wrap gap-3">
+            {["West Bengal", "Andhra Pradesh"].map((state) => (
+              <span
+                key={state}
+                className="px-5 py-2.5 rounded-full bg-[#F7F2E8] text-[#9B7A3E] border border-[#E8D9B9] font-medium"
+              >
+                {state}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Special Focus */}
+        <div>
+          <h3 className="text-2xl font-bold text-[#1F5E4E] mb-5">
+            Special Focus
+          </h3>
+
+          <div className="grid md:grid-cols-1 gap-4">
+
+            <div className="bg-white rounded-2xl p-5 border border-[#E6ECE9] shadow-sm hover:shadow-md transition">
+              <h4 className="font-semibold text-[#1F5E4E] mb-2">
+                Particularly Vulnerable Tribal Groups (PVTGs)
+              </h4>
+              <p className="text-gray-600 text-sm">
+                Dedicated interventions for highly vulnerable tribal communities.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl p-5 border border-[#E6ECE9] shadow-sm hover:shadow-md transition">
+              <h4 className="font-semibold text-[#1F5E4E] mb-2">
+                Remote, Mineral-Rich & Forest Villages
+              </h4>
+              <p className="text-gray-600 text-sm">
+                Supporting communities living in geographically challenging areas.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl p-5 border border-[#E6ECE9] shadow-sm hover:shadow-md transition">
+              <h4 className="font-semibold text-[#1F5E4E] mb-2">
+                Rural & Underserved Communities
+              </h4>
+              <p className="text-gray-600 text-sm">
+                Creating opportunities where access to services remains limited.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+    {/* ================= COMPANY PROFILE SECTION ================= */}
+{/* ================= ORGANIZATION PROFILE ================= */}
+<section className="py-10 bg-gradient-to-r from-[#0B5D4D] to-[#144D7A]">
+  <div className="max-w-6xl mx-auto px-6">
+
+    <div className="bg-white rounded-[24px] overflow-hidden shadow-xl">
+
+      <div className="grid lg:grid-cols-2 items-center gap-4">
+
+        {/* Left Side */}
+        <div className="bg-[#F8FAFC] p-6 flex justify-center">
+
+          <div className="relative w-[180px] h-[240px] bg-white rounded-xl shadow-lg border overflow-hidden group">
+
+            <Image
+              src="/images/profilepage.jpg"
+              alt="Ayushman Foundation Profile"
+              fill
+              className="object-cover group-hover:scale-105 transition duration-500"
+            />
+
+            <div className="absolute top-3 right-3 bg-red-600 text-white px-2 py-1 rounded-full text-[10px] font-semibold">
+              PDF
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* Right Side */}
+        <div className="p-6 lg:p-8">
+
+          <span className="uppercase tracking-[3px] text-[#0B5D4D] text-xs font-semibold">
+            Organization Profile
+          </span>
+
+          <h2 className="text-2xl md:text-3xl font-bold text-[#12355B] mt-2">
+            View Our Foundation Profile
+          </h2>
+
+          <p className="text-gray-500 text-sm leading-7 mt-4">
+            Explore Ayushman Foundation's mission, vision, governance,
+            key achievements, CSR partnerships, livelihood initiatives,
+            community impact and future roadmap through our official
+            organization profile.
+          </p>
+
+          <div className="flex flex-wrap gap-3 mt-5">
+
+            {/* View Button */}
+            <a
+              href="/images/Ayushman_foundation_Profile.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#0B5D4D] text-white text-sm font-medium hover:scale-105 transition duration-300"
+            >
+              📖 View Profile
+            </a>
+
+            {/* Download Button */}
+            <a
+              href="/images/Ayushman_foundation_Profile.pdf"
+              download
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-[#0B5D4D] text-[#0B5D4D] text-sm font-medium hover:bg-[#0B5D4D] hover:text-white transition duration-300"
+            >
+              ⬇ Download Profile
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+     
+
+<section className="py-16 bg-white">
+  <div className="max-w-6xl mx-auto px-6">
+
+    {/* Key Achievements */}
+    <div className="mb-14">
+
+      <div className="flex items-center gap-4 mb-6">
+        <div className="h-[3px] w-16 bg-yellow-400"></div>
+
+        <h2 className="text-2xl md:text-3xl font-bold text-[#0D1B2A]">
+          Key Achievements (2025–26)
+        </h2>
+
+        <div className="flex-1 h-[3px] bg-yellow-400"></div>
+      </div>
+
+      <div className="space-y-4 text-[15px] leading-8 text-gray-700">
+
+        <p>
+          ● Directly impacted <span className="font-semibold text-black">over 5,200 Nos of individuals and families</span> across multiple districts.
+        </p>
+
+        <p>
+          ● Formed and strengthened <span className="font-semibold text-black">28 Nos of new Self-Help Groups</span> covering 412 Nos of women.
+        </p>
+
+        <p>
+          ● Provided vocational and skill training to <span className="font-semibold text-black">633 Nos of beneficiaries</span>, with <span className="font-semibold text-black">142 successful job placements</span>.
+        </p>
+
+        <p>
+          ● Planted <span className="font-semibold text-black">3,200 Nos of saplings</span> and established <span className="font-semibold text-black">7 waste-to-wealth micro-enterprises</span>.
+        </p>
+
+        <p>
+          ● Supported <span className="font-semibold text-black">485 Nos of  women</span> through livelihood and entrepreneurship programs.
+        </p>
+
+        <p>
+          ● Reached <span className="font-semibold text-black">310 Nos of youth and women</span> through digital literacy initiatives.
+        </p>
+
+        <p>
+          ● Successfully implemented multiple CSR-supported projects with corporates.
+        </p>
+
+      </div>
+    </div>
+
+    {/* Core Competencies */}
+    <div className="mb-14">
+
+      <div className="flex items-center gap-4 mb-6">
+        <div className="h-[3px] w-16 bg-yellow-400"></div>
+
+        <h2 className="text-2xl md:text-3xl font-bold text-[#0D1B2A]">
+          Core Competencies
+        </h2>
+
+        <div className="flex-1 h-[3px] bg-yellow-400"></div>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-x-10 gap-y-4 text-[15px] text-gray-700 leading-8">
+
+        <p>✓ Professional management of large-scale CSR projects with transparency and accountability.</p>
+
+        <p>✓ Expertise in developing women-led Producer Companies with strong governance.</p>
+
+        <p>✓ Design innovation and premium market linkage for traditional crafts.</p>
+
+        <p>✓ Robust Monitoring, Evaluation & Learning (MEL) systems including digital MIS and geo-tagging.</p>
+
+        <p>✓ Strong networking with government departments, CSR partners and marketing organizations.</p>
+
+      </div>
+    </div>
+
+    {/* Registration */}
+    <div className="border-t pt-8">
+
+      <div className="flex items-center gap-4 mb-6">
+        <div className="h-[3px] w-16 bg-yellow-400"></div>
+
+        <h2 className="text-2xl md:text-3xl font-bold text-[#0D1B2A]">
+          Registrations & Compliance
+        </h2>
+
+        <div className="flex-1 h-[3px] bg-yellow-400"></div>
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-6">
+
+        <div>
+          <h4 className="font-semibold text-lg">
+            Section 8 Company
+          </h4>
+
+          <p className="text-sm text-gray-500 mt-1">
+            Registered under Companies Act, 2013
+          </p>
+        </div>
+
+        <div>
+          <h4 className="font-semibold text-lg">
+            NITI Aayog • 12A • 80G
+          </h4>
+
+          <p className="text-sm text-gray-500 mt-1">
+            Statutory Registrations
+          </p>
+        </div>
+
+        <div>
+          <h4 className="font-semibold text-lg">
+            CSR-1 Registration
+          </h4>
+
+          <p className="text-sm text-gray-500 mt-1">
+            Ministry of Corporate Affairs
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
       {/* Mission, Vision, Values */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-20">
-            <FadeInSection>
-              <Card className="h-full border-0 bg-gradient-to-br from-primary/5 to-primary/10">
-                <CardContent className="p-8 space-y-4">
-                  <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
-                    <Target className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="heading-tertiary text-primary">Our Mission</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    To provide accessible, quality healthcare and education services to underserved communities,
-                    empowering them to lead healthier, more prosperous lives while building sustainable local capacity.
-                  </p>
-                </CardContent>
-              </Card>
-            </FadeInSection>
-
-            <FadeInSection delay={200}>
-              <Card className="h-full border-0 bg-gradient-to-br from-secondary/5 to-secondary/10">
-                <CardContent className="p-8 space-y-4">
-                  <div className="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center">
-                    <Eye className="w-6 h-6 text-secondary" />
-                  </div>
-                  <h3 className="heading-tertiary text-secondary">Our Vision</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    A world where every individual, regardless of their geographic location or economic status, has
-                    access to quality healthcare and education opportunities that enable them to thrive.
-                  </p>
-                </CardContent>
-              </Card>
-            </FadeInSection>
-
-            <FadeInSection delay={400}>
-              <Card className="h-full border-0 bg-gradient-to-br from-accent/5 to-accent/10">
-                <CardContent className="p-8 space-y-4">
-                  <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
-                    <Heart className="w-6 h-6 text-accent" />
-                  </div>
-                  <h3 className="heading-tertiary text-accent">Our Impact</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Through evidence-based programs and community partnerships, we create measurable, lasting change
-                    that transforms lives and strengthens communities across rural India.
-                  </p>
-                </CardContent>
-              </Card>
-            </FadeInSection>
-          </div>
-
-          {/* Core Values */}
-          <FadeInSection className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="mb-4">
-              Our Foundation
-            </Badge>
-            <h2 className="heading-secondary">Core Values That Guide Us</h2>
-            <p className="body-large text-muted-foreground max-w-2xl mx-auto">
-              These fundamental principles shape every decision we make and every program we implement.
-            </p>
-          </FadeInSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {values.map((value, index) => (
-              <FadeInSection key={index} delay={index * 100}>
-                <Card className="group hover:shadow-lg transition-all duration-300 border-0 bg-card/50 h-full">
-                  <CardContent className="p-6 space-y-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <value.icon className="w-6 h-6 text-primary" />
-                    </div>
-                    <h3 className="font-serif font-semibold text-lg">{value.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
-                  </CardContent>
-                </Card>
-              </FadeInSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
+     
       {/* Leadership Team */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInSection className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="mb-4">
-              Leadership
-            </Badge>
-            <h2 className="heading-secondary">Meet Our Leadership Team</h2>
-            <p className="body-large text-muted-foreground max-w-2xl mx-auto">
-              Our experienced leaders bring decades of expertise in healthcare, social development, and community
-              engagement.
-            </p>
-          </FadeInSection>
+     <section className="py-20 bg-[#F8FAFC] overflow-hidden">
+  <div className="max-w-6xl mx-auto px-6">
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {leadership.map((leader, index) => (
-              <FadeInSection key={index} delay={index * 150}>
-                <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-card/50">
-                  <CardContent className="p-6 space-y-4 text-center">
-                    <div className="relative mx-auto w-24 h-24 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                      <Image
-  src={leader.image}
-  alt={leader.name}
-  width={80}
-  height={80}
-  className="rounded-full object-cover"
-/>
-                    </div>
-                    <div>
-                      <h3 className="font-serif font-semibold text-lg text-foreground">{leader.name}</h3>
-                      <p className="text-primary font-medium text-sm">{leader.role}</p>
-                      <p className="text-xs text-muted-foreground mt-1">{leader.education}</p>
-                    </div>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{leader.bio}</p>
-                    <div className="flex justify-center space-x-2">
-                      <Button variant="ghost" size="sm">
-                        <Mail className="w-4 h-4" />
-                      </Button>
-                      <Button variant="ghost" size="sm">
-                        <Linkedin className="w-4 h-4" />
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </FadeInSection>
-            ))}
-          </div>
-        </div>
-      </section>
+    {/* Heading */}
+    <div className="text-center mb-16">
+      <span className="text-primary uppercase tracking-[4px] font-semibold">
+        Governance
+      </span>
 
-      {/* Timeline */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInSection className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="mb-4">
-              Our Journey
-            </Badge>
-            <h2 className="heading-secondary">Milestones of Impact</h2>
-            <p className="body-large text-muted-foreground max-w-2xl mx-auto">
-              From humble beginnings to national recognition, our journey reflects our commitment to transforming lives.
-            </p>
-          </FadeInSection>
+      <h2 className="text-4xl md:text-5xl font-bold mt-3 text-[#0B1E5B]">
+        Executive Body
+      </h2>
 
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-4 md:left-1/2 transform md:-translate-x-px h-full w-0.5 bg-border"></div>
+      <div className="w-24 h-1 bg-primary mx-auto mt-5 rounded-full"></div>
+    </div>
 
-            <div className="space-y-12">
-              {milestones.map((milestone, index) => (
-                <FadeInSection key={index} delay={index * 100}>
-                  <div
-                    className={`relative flex items-center ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
-                  >
-                    {/* Timeline dot */}
-                    <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background z-10"></div>
 
-                    {/* Content */}
-                    <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"}`}>
-                      <Card className="border-0 bg-card/50 hover:shadow-lg transition-all duration-300">
-                        <CardContent className="p-6 space-y-3">
-                          <div className="flex items-center space-x-3">
-                            <Badge variant="secondary" className="text-xs">
-                              {milestone.year}
-                            </Badge>
-                            <Calendar className="w-4 h-4 text-muted-foreground" />
-                          </div>
-                          <h3 className="font-serif font-semibold text-lg text-foreground">{milestone.title}</h3>
-                          <p className="text-muted-foreground text-sm leading-relaxed">{milestone.description}</p>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </div>
-                </FadeInSection>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+    {/* Chairman */}
+    <div className="flex justify-center relative">
 
-      {/* Recognition & Certifications */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInSection className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="mb-4">
-              Recognition
-            </Badge>
-            <h2 className="heading-secondary">Awards & Certifications</h2>
-            <p className="body-large text-muted-foreground max-w-2xl mx-auto">
-              Our commitment to excellence has been recognized by national and international organizations.
-            </p>
-          </FadeInSection>
+      <div className="bg-[#0B1E5B] text-white px-10 py-7 rounded-[30px] shadow-2xl text-center z-10">
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { title: "National NGO Excellence Award", year: "2022", org: "Ministry of Health" },
-              { title: "ISO 9001:2015 Certified", year: "2021", org: "Quality Management" },
-              { title: "UN SDG Partnership", year: "2020", org: "United Nations" },
-              { title: "80G Tax Exemption", year: "2010", org: "Income Tax Department" },
-            ].map((award, index) => (
-              <FadeInSection key={index} delay={index * 150}>
-                <Card className="text-center border-0 bg-card/50 hover:shadow-lg transition-all duration-300">
-                  <CardContent className="p-6 space-y-4">
-                    <div className="w-12 h-12 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
-                      <Award className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-serif font-semibold text-sm text-foreground">{award.title}</h3>
-                      <p className="text-xs text-muted-foreground mt-1">
-                        {award.org} • {award.year}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </FadeInSection>
-            ))}
-          </div>
-        </div>
-      </section>
+        <p className="uppercase tracking-[4px] text-xs text-white/70">
+          Chairman
+        </p>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-secondary text-primary-foreground">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-          <FadeInSection>
-            <h2 className="heading-secondary text-primary-foreground">Join Our Mission</h2>
-            <p className="body-large opacity-90 max-w-2xl mx-auto">
-              Be part of our journey to transform healthcare in rural India. Together, we can create lasting change.
-            </p>
-          </FadeInSection>
+        <h3 className="text-3xl font-bold mt-3">
+          Suresh Kumar Mishra
+        </h3>
 
-          <FadeInSection delay={300}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90" asChild>
-                <Link href="/volunteer">
-                  <Users className="w-5 h-5 mr-2" />
-                  Volunteer With Us
-                </Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-transparent border-white text-white hover:bg-white hover:text-primary"
-                asChild
-              >
-                <Link href="/donate">
-                  <Heart className="w-5 h-5 mr-2" />
-                  Support Our Cause
-                </Link>
-              </Button>
-            </div>
-          </FadeInSection>
-        </div>
-      </section>
+      </div>
+
+    </div>
+
+    {/* Vertical Line */}
+    <div className="w-[2px] h-16 bg-primary mx-auto"></div>
+
+
+    {/* Row 2 */}
+    <div className="grid md:grid-cols-2 gap-20 relative">
+
+      <ExecutiveNode
+        role="Vice Chairman"
+        name="Sashmita Dash"
+      />
+
+      <ExecutiveNode
+        role="Secretary"
+        name="Swayanshree Mishra"
+      />
+
+    </div>
+
+    {/* Line */}
+    <div className="w-[2px] h-14 bg-primary mx-auto"></div>
+
+
+    {/* Row 3 */}
+    <div className="grid md:grid-cols-2 gap-20">
+
+      <ExecutiveNode
+        role="Treasurer"
+        name="Niranjan Mishra"
+      />
+
+      <ExecutiveNode
+        role="Asst. Secretary"
+        name="Etishree Pattanaik"
+      />
+
+    </div>
+
+
+    {/* Members */}
+    <div className="mt-16 bg-white rounded-[35px] p-10 shadow-xl border border-slate-100 text-center">
+
+      <p className="uppercase tracking-[4px] text-sm text-gray-500">
+        Members
+      </p>
+
+      <h3 className="text-2xl font-bold text-[#0B1E5B] mt-4">
+        Dusmanta Kumar Nayak
+      </h3>
+
+      <div className="w-12 h-[2px] bg-primary mx-auto my-4"></div>
+
+      <h3 className="text-2xl font-bold text-[#0B1E5B]">
+        Rudra Narayan Mishra
+      </h3>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+     
     </div>
   )
+}
+function ExecutiveNode({
+  role,
+  name,
+}: {
+  role: string;
+  name: string;
+}) {
+  return (
+    <div className="relative">
+
+      <div className="bg-white rounded-[30px] p-8 shadow-xl border border-slate-100 text-center">
+
+        <p className="uppercase tracking-[3px] text-xs text-gray-500">
+          {role}
+        </p>
+
+        <h3 className="text-2xl font-bold text-[#0B1E5B] mt-3">
+          {name}
+        </h3>
+
+      </div>
+
+    </div>
+  );
 }

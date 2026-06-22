@@ -29,6 +29,10 @@ import {
   HeartPulse,
   
   Building2,
+   
+  ShieldCheck,
+  Handshake,
+  BadgePercent,
 } from "lucide-react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
@@ -105,6 +109,44 @@ const partnerImages = [
   "/images/partner4.png",
   "/images/partner5.png",
 ]
+
+const container = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const fadeUp = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+const scaleIn = {
+  hidden: {
+    opacity: 0,
+    scale: 0.9,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
 
 export default function HomePage() {
     const [current, setCurrent] = useState(0)
@@ -227,91 +269,139 @@ export default function HomePage() {
         ))}
       </div>
     </section>
-
-<section className="w-full py-14 bg-[#FAFAFA]">
-  <div className="max-w-6xl mx-auto px-6">
-
-    {/* Label */}
-    <div className="flex items-center gap-3 mb-4">
-      <div className="w-10 h-[2px] bg-red-600" />
-      <span className="uppercase text-xs font-semibold tracking-[3px] text-red-600">
-        About Us
-      </span>
-    </div>
-
-    {/* Heading */}
-    <h2
-      className="text-3xl md:text-5xl font-bold text-[#111827] leading-tight max-w-4xl"
-      style={{ fontFamily: "Inter, sans-serif" }}
-    >
-      Ayushman Foundation
-    </h2>
-
-    {/* Subtitle */}
-    <p
-      className="mt-3 text-lg text-gray-500 italic max-w-3xl"
-      style={{ fontFamily: "Nunito, sans-serif" }}
-    >
-      Empowering marginalized communities through sustainable
-      development and lasting social impact.
-    </p>
-
-    {/* Focus Areas */}
-    <div className="flex flex-wrap gap-2 mt-5 mb-6">
-      {[
-        "Women Empowerment",
-        "Education",
-        "Health & Nutrition",
-        "Skill Development",
-        "Environment",
-      ].map((item) => (
-        <span
-          key={item}
-          className="px-3 py-1.5 rounded-full bg-white text-sm text-gray-700 border border-gray-200 hover:border-red-200 transition-all"
+ <section className="w-full py-14 bg-[#FAFAFA] overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
         >
-          {item}
-        </span>
-      ))}
-    </div>
+          {/* Label */}
+          <motion.div
+            variants={fadeUp}
+            className="flex items-center gap-3 mb-4"
+          >
+            <div className="w-10 h-[2px] bg-red-600" />
+            <span className="uppercase text-xs font-semibold tracking-[3px] text-red-600">
+              About Us
+            </span>
+          </motion.div>
 
-    {/* Content */}
-    <div className="max-w-4xl">
-      <p
-        className="text-gray-700 leading-7 text-[16px] mb-4"
-        style={{ fontFamily: "Nunito, sans-serif" }}
-      >
-        Ayushman Foundation is a dynamic, non-profit organization
-        registered under the Section 8 Company Act, 2013 dedicated to
-        the holistic empowerment of marginalized and underserved
-        communities across Odisha and beyond.
-      </p>
+          {/* Heading */}
+          <motion.h2
+            variants={fadeUp}
+            className="text-3xl md:text-5xl font-bold text-[#111827] leading-tight max-w-4xl"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            Ayushman Foundation
+          </motion.h2>
 
-      <p
-        className="text-gray-700 leading-7 text-[16px]"
-        style={{ fontFamily: "Nunito, sans-serif" }}
-      >
-        Established with a vision to create sustainable, dignified,
-        and empowered lives, the Foundation works at the grassroots
-        level with a strong focus on women empowerment, sustainable
-        livelihoods, skill development, health & nutrition,
-        education, and environmental conservation.
-      </p>
-    </div>
+          {/* Subtitle */}
+          <motion.p
+            variants={fadeUp}
+            className="mt-3 text-lg text-gray-500 italic max-w-3xl"
+            style={{ fontFamily: "Nunito, sans-serif" }}
+          >
+            Empowering marginalized communities through sustainable
+            development and lasting social impact.
+          </motion.p>
 
-    {/* Read More */}
-    <div className="mt-6">
-      <a
-        href="/about"
-        className="inline-flex items-center gap-2 text-red-600 font-semibold hover:gap-4 transition-all duration-300"
-        style={{ fontFamily: "Inter, sans-serif" }}
-      >
-        Read More
-        <span className="text-lg">→</span>
-      </a>
-    </div>
+          {/* Focus Areas */}
+          <motion.div
+            variants={fadeUp}
+            className="flex flex-wrap gap-2 mt-5 mb-6"
+          >
+            {[
+              "Women Empowerment",
+              "Education",
+              "Health & Nutrition",
+              "Skill Development",
+              "Environment",
+            ].map((item, index) => (
+              <motion.span
+                key={item}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  delay: index * 0.1,
+                  duration: 0.4,
+                }}
+                whileHover={{
+                  y: -3,
+                  scale: 1.05,
+                }}
+                className="px-3 py-1.5 rounded-full bg-white text-sm text-gray-700 border border-gray-200 hover:border-red-200 transition-all cursor-default"
+              >
+                {item}
+              </motion.span>
+            ))}
+          </motion.div>
 
-  </div>
-</section>
+          {/* Content */}
+          <motion.div
+            variants={fadeUp}
+            className="max-w-4xl"
+          >
+            <p
+              className="text-gray-700 leading-7 text-[16px] mb-4"
+              style={{ fontFamily: "Nunito, sans-serif" }}
+            >
+              Ayushman Foundation is a dynamic, non-profit organization
+              registered under the Section 8 Company Act, 2013 dedicated
+              to the holistic empowerment of marginalized and underserved
+              communities across Odisha and beyond.
+            </p>
+
+            <p
+              className="text-gray-700 leading-7 text-[16px]"
+              style={{ fontFamily: "Nunito, sans-serif" }}
+            >
+              Established with a vision to create sustainable, dignified,
+              and empowered lives, the Foundation works at the grassroots
+              level with a strong focus on women empowerment, sustainable
+              livelihoods, skill development, health & nutrition,
+              education, and environmental conservation.
+            </p>
+          </motion.div>
+
+          {/* Read More Button */}
+          <motion.div
+            variants={fadeUp}
+            className="mt-6"
+          >
+            <motion.a
+              href="/about"
+              whileHover={{
+                x: 8,
+              }}
+              transition={{
+                duration: 0.3,
+              }}
+              className="inline-flex items-center gap-2 text-red-600 font-semibold"
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              Read More
+
+              <motion.span
+                animate={{
+                  x: [0, 4, 0],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="text-lg"
+              >
+                →
+              </motion.span>
+            </motion.a>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
 <section className="w-full bg-[#F7F8F5] py-14 overflow-hidden">
   <div className="max-w-[1280px] mx-auto px-5 lg:px-[60px]">
 
@@ -503,71 +593,71 @@ export default function HomePage() {
 
         <div className="relative grid grid-cols-2 lg:grid-cols-4">
 
-          {/* ITEM 1 */}
-          <div className="relative flex flex-col items-center text-center px-5 py-8">
-            <div className="w-[72px] h-[72px] rounded-full border border-[#d7e6ff] bg-[#f5f9ff] flex items-center justify-center mb-4">
-              <Shield className="w-8 h-8 text-[#2454d3] stroke-[2]" />
-            </div>
+     {/* ITEM 1 */}
+<div className="relative flex flex-col items-center text-center px-5 py-8">
+  <div className="w-[72px] h-[72px] rounded-full border border-[#d7e6ff] bg-[#f5f9ff] flex items-center justify-center mb-4">
+    <Building2 className="w-8 h-8 text-[#2454d3] stroke-[2]" />
+  </div>
 
-            <h3 className="text-[17px] font-semibold text-[#111827] leading-tight">
-              ISO Certified
-            </h3>
+  <h3 className="text-[17px] font-semibold text-[#111827] leading-tight">
+    Section 8 Company
+  </h3>
 
-            <p className="mt-2 text-[13px] leading-6 text-[#6b7280] max-w-[190px]">
-              Ensuring quality and excellence
-            </p>
+  <p className="mt-2 text-[13px] leading-6 text-[#6b7280] max-w-[190px]">
+    Registered non-profit organization
+  </p>
 
-            <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[1px] h-[90px] bg-[#e5e7eb]" />
-          </div>
+  <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[1px] h-[90px] bg-[#e5e7eb]" />
+</div>
 
-          {/* ITEM 2 */}
-          <div className="relative flex flex-col items-center text-center px-5 py-8">
-            <div className="w-[72px] h-[72px] rounded-full border border-[#d7e6ff] bg-[#f5f9ff] flex items-center justify-center mb-4">
-              <Award className="w-8 h-8 text-[#2454d3] stroke-[2]" />
-            </div>
+{/* ITEM 2 */}
+<div className="relative flex flex-col items-center text-center px-5 py-8">
+  <div className="w-[72px] h-[72px] rounded-full border border-[#d7e6ff] bg-[#f5f9ff] flex items-center justify-center mb-4">
+    <ShieldCheck className="w-8 h-8 text-[#2454d3] stroke-[2]" />
+  </div>
 
-            <h3 className="text-[17px] font-semibold text-[#111827] leading-tight">
-              NGO Excellence
-            </h3>
+  <h3 className="text-[17px] font-semibold text-[#111827] leading-tight">
+    ISO Certified
+  </h3>
 
-            <p className="mt-2 text-[13px] leading-6 text-[#6b7280] max-w-[190px]">
-              Recognized for our impact
-            </p>
+  <p className="mt-2 text-[13px] leading-6 text-[#6b7280] max-w-[190px]">
+    Commitment to quality standards
+  </p>
 
-            <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[1px] h-[90px] bg-[#e5e7eb]" />
-          </div>
+  <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[1px] h-[90px] bg-[#e5e7eb]" />
+</div>
 
-          {/* ITEM 3 */}
-          <div className="relative flex flex-col items-center text-center px-5 py-8">
-            <div className="w-[72px] h-[72px] rounded-full border border-[#d7e6ff] bg-[#f5f9ff] flex items-center justify-center mb-4">
-              <Globe className="w-8 h-8 text-[#2454d3] stroke-[2]" />
-            </div>
+{/* ITEM 3 */}
+<div className="relative flex flex-col items-center text-center px-5 py-8">
+  <div className="w-[72px] h-[72px] rounded-full border border-[#d7e6ff] bg-[#f5f9ff] flex items-center justify-center mb-4">
+    <Handshake className="w-8 h-8 text-[#2454d3] stroke-[2]" />
+  </div>
 
-            <h3 className="text-[17px] font-semibold text-[#111827] leading-tight">
-              UN Partner
-            </h3>
+  <h3 className="text-[17px] font-semibold text-[#111827] leading-tight">
+    CSR Partner
+  </h3>
 
-            <p className="mt-2 text-[13px] leading-6 text-[#6b7280] max-w-[190px]">
-              Proud global collaboration
-            </p>
+  <p className="mt-2 text-[13px] leading-6 text-[#6b7280] max-w-[190px]">
+    Trusted CSR implementation agency
+  </p>
 
-            <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[1px] h-[90px] bg-[#e5e7eb]" />
-          </div>
+  <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[1px] h-[90px] bg-[#e5e7eb]" />
+</div>
 
-          {/* ITEM 4 */}
-          <div className="relative flex flex-col items-center text-center px-5 py-8">
-            <div className="w-[72px] h-[72px] rounded-full border border-[#d7e6ff] bg-[#f5f9ff] flex items-center justify-center mb-4">
-              <CheckCircle className="w-8 h-8 text-[#2454d3] stroke-[2]" />
-            </div>
+{/* ITEM 4 */}
+<div className="relative flex flex-col items-center text-center px-5 py-8">
+  <div className="w-[72px] h-[72px] rounded-full border border-[#d7e6ff] bg-[#f5f9ff] flex items-center justify-center mb-4">
+    <BadgePercent className="w-8 h-8 text-[#2454d3] stroke-[2]" />
+  </div>
 
-            <h3 className="text-[17px] font-semibold text-[#111827] leading-tight">
-              80G Tax Benefit
-            </h3>
+  <h3 className="text-[17px] font-semibold text-[#111827] leading-tight">
+    80G Tax Benefit
+  </h3>
 
-            <p className="mt-2 text-[13px] leading-6 text-[#6b7280] max-w-[190px]">
-              Donations are tax exempted
-            </p>
-          </div>
+  <p className="mt-2 text-[13px] leading-6 text-[#6b7280] max-w-[190px]">
+    Eligible for tax exemption benefits
+  </p>
+</div>
         </div>
       </div>
     </FadeInSection>
@@ -730,7 +820,7 @@ export default function HomePage() {
             lineHeight: "1",
           }}
         >
-          15+
+          06+
         </h3>
 
         <p
@@ -818,7 +908,7 @@ export default function HomePage() {
     sub: "women-led initiatives",
     color: "#C62828",
     bg: "#FFF1F1",
-    image: "/images/women.jpg",
+    image: "/images/women.png",
   },
 
   {
@@ -1163,8 +1253,8 @@ export default function HomePage() {
   </div>
 </section> */}
 
-<section className="relative py-[70px] bg-[#FBFBF8] overflow-hidden">
-  {/* SIDE IMAGES */}
+{/* <section className="relative py-[70px] bg-[#FBFBF8] overflow-hidden">
+ 
   <div className="hidden 2xl:block">
     <img
       src="images/v1.png"
@@ -1192,7 +1282,7 @@ export default function HomePage() {
   </div>
 
   <div className="max-w-[1280px] mx-auto px-6 relative z-10">
-    {/* HEADER */}
+   
     <div className="text-center mb-[55px]">
       <div
         className="inline-flex items-center justify-center h-[38px] px-4 rounded-full bg-[#EAF5EE] text-[#198754] text-[13px] font-medium mb-4"
@@ -1219,9 +1309,9 @@ export default function HomePage() {
       </p>
     </div>
 
-    {/* CARDS */}
+    
  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[22px] max-w-[980px] mx-auto">
-      {/* CARD 1 */}
+     
       <div className="relative bg-white rounded-[24px] border border-[#23B26D] px-[30px] pt-[11px] pb-[26px] overflow-hidden h-[314px]">
         <div
           className="text-[#23B26D] text-[58px] leading-none"
@@ -1284,7 +1374,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* ICON */}
+       
         <div className="absolute right-[28px] bottom-[35px] opacity-[0.15]">
           <svg
             width="55"
@@ -1299,7 +1389,7 @@ export default function HomePage() {
           </svg>
         </div>
 
-       {/* BLUSH WAVE */}
+      
 <div className="absolute bottom-0 right-0">
   <svg
     width="120"
@@ -1331,7 +1421,7 @@ export default function HomePage() {
 </div>
       </div>
 
-      {/* CARD 2 */}
+      
       <div className="relative bg-white rounded-[24px] border border-[#2F80ED] px-[30px] pt-[11px] pb-[26px] overflow-hidden h-[314px]">
         <div
           className="text-[#2F80ED] text-[58px] leading-none"
@@ -1408,7 +1498,7 @@ export default function HomePage() {
           </svg>
         </div>
 
-  {/* BLUSH WAVE */}
+
 <div className="absolute bottom-0 right-0">
   <svg
     width="120"
@@ -1440,7 +1530,7 @@ export default function HomePage() {
 </div>
       </div>
 
-      {/* CARD 3 */}
+
       <div className="relative bg-white rounded-[24px] border border-[#F59E0B] px-[30px] pt-[11px] pb-[26px] overflow-hidden h-[314px]">
         <div
           className="text-[#F59E0B] text-[58px] leading-none"
@@ -1517,7 +1607,7 @@ export default function HomePage() {
           </svg>
         </div>
 
-    {/* BLUSH WAVE */}
+  
 <div className="absolute bottom-0 right-0">
   <svg
     width="120"
@@ -1550,7 +1640,7 @@ export default function HomePage() {
       </div>
     </div>
   </div>
-</section>
+</section> */}
 
 <section className="relative w-full overflow-hidden pt-[70px] pb-[60px]">
 
