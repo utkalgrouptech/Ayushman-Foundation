@@ -39,246 +39,57 @@ import {
   Shield,
   Sprout,
   Flame,
+  
 } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion";
 import Image from "next/image"
 export default function ProgramsPage() {
-  const sectors = [
-    {
-      id: "children-development",
-      title: "Children's Development",
-      icon: Baby,
-      description:
-        "We focus on holistic child development through education, nutrition, and protection programs for underprivileged children.",
-      color: "text-blue-600",
-      bgColor: "bg-blue-100",
-      stats: {
-        beneficiaries: "5K+",
-        locations: "200+",
-        programs: "15+ initiatives",
-      },
-    },
-    {
-      id: "climate-change",
-      title: "Climate Change",
-      icon: CloudRain,
-      description:
-        "Addressing climate challenges through awareness, adaptation strategies, and sustainable practices in vulnerable communities.",
-      color: "text-green-600",
-      bgColor: "bg-green-100",
-      stats: {
-        beneficiaries: "10K+",
-        locations: "50+",
-        programs: "20+ initiatives",
-      },
-    },
-    {
-      id: "urban-development",
-      title: "Urban Development",
-      icon: Building,
-      description:
-        "Improving living conditions in urban slums through better infrastructure, services, and community participation.",
-      color: "text-purple-600",
-      bgColor: "bg-purple-100",
-      stats: {
-        beneficiaries: "8K+",
-        locations: "30+",
-        programs: "12+ initiatives",
-      },
-    },
-    {
-      id: "skilling-livelihood",
-      title: "Skilling & Livelihood",
-      icon: Briefcase,
-      description:
-        "Enhancing employability and entrepreneurship through skill development programs for youth and women.",
-      color: "text-orange-600",
-      bgColor: "bg-orange-100",
-      stats: {
-        beneficiaries: "3K+",
-        locations: "40+",
-        programs: "10+ initiatives",
-      },
-    },
-    {
-      id: "forest-tribal",
-      title: "Forest & Tribal Development",
-      icon: TreePine,
-      description:
-        "Promoting sustainable forest management and supporting tribal communities for climate-resilient development.",
-      color: "text-emerald-600",
-      bgColor: "bg-emerald-100",
-      stats: {
-        beneficiaries: "7K+",
-        locations: "25+",
-        programs: "8+ initiatives",
-      },
-    },
-    {
-      id: "environment-disaster",
-      title: "Environment & Disaster Management",
-      icon: Shield,
-      description:
-        "Building community resilience through environmental conservation and disaster risk reduction programs.",
-      color: "text-red-600",
-      bgColor: "bg-red-100",
-      stats: {
-        beneficiaries: "12K+",
-        locations: "35+",
-        programs: "18+ initiatives",
-      },
-    },
-  ]
 
-  const services = [
-    {
-      id: "medical-camps",
-      title: "Free Medical Camps",
-      icon: Stethoscope,
-      description:
-        "We organize regular health camps in rural and urban slum areas to provide free medical check-ups, consultations, and medicines to those who cannot afford basic healthcare.",
-      color: "text-primary",
-      bgColor: "bg-primary/10",
-      stats: {
-        beneficiaries: "20K+",
-        locations: "300+",
-        camps: "500+ camps",
-      },
-    },
-    {
-      id: "education-support",
-      title: "Support for Children & Education",
-      icon: GraduationCap,
-      description:
-        "We support education through school enrollment drives, distribution of learning materials, and scholarships for underprivileged children.",
-      color: "text-secondary",
-      bgColor: "bg-secondary/10",
-      stats: {
-        beneficiaries: "5K+",
-        locations: "200+",
-        enrollments: "1000+ enrollments",
-      },
-    },
-    {
-      id: "health-awareness",
-      title: "Health Awareness & Education",
-      icon: Lightbulb,
-      description:
-        "We conduct health education programs on sanitation, maternal health, mental health, and lifestyle diseases to encourage healthier living.",
-      color: "text-accent",
-      bgColor: "bg-accent/10",
-      stats: {
-        beneficiaries: "10K+",
-        locations: "100+",
-        programs: "50+ programs",
-      },
-    },
-    {
-      id: "skill-development",
-      title: "Skill Development & Training",
-      icon: Wrench,
-      description:
-        "We offer vocational training and skill-building workshops to empower youth and women, helping them become self-reliant and financially independent.",
-      color: "text-green-600",
-      bgColor: "bg-green-100",
-      stats: {
-        beneficiaries: "3K+",
-        locations: "50+",
-        programs: "25+ training programs",
-      },
-    },
-    {
-      id: "elderly-care",
-      title: "Elderly & Special Needs Care",
-      icon: HeartHandshake,
-      description:
-        "We provide care, medical support, and counseling services for senior citizens and differently-abled individuals in neglected communities.",
-      color: "text-purple-600",
-      bgColor: "bg-purple-100",
-      stats: {
-        beneficiaries: "2K+",
-        locations: "30+",
-        programs: "15+ programs",
-      },
-    },
-  ]
-
-  const howWeWork = [
-    {
-      step: "1",
-      title: "Needs Assessment",
-      description: "We begin by identifying real challenges on the ground through community surveys, local partnerships, and data insights.",
-      icon: Target,
-    },
-    {
-      step: "2",
-      title: "Strategic Planning",
-      description: "Our team develops targeted programs that are practical, scalable, and aligned with both community needs and government policies.",
-      icon: TrendingUp,
-    },
-    {
-      step: "3",
-      title: "Implementation",
-      description: "With the help of trained volunteers, field experts, and partners, we execute each program with efficiency, transparency, and compassion.",
-      icon: CheckCircle,
-    },
-    {
-      step: "4",
-      title: "Monitoring & Impact",
-      description: "We continuously evaluate our impact, document outcomes, and adapt strategies to ensure long-term success and accountability.",
-      icon: Award,
-    },
-    {
-      step: "5",
-      title: "Community Engagement",
-      description: "We involve local stakeholders at every step—empowering beneficiaries to take ownership and actively participate in their own development.",
-      icon: Users,
-    },
-  ]
-
-  const coreObjectives = [
-    {
-      title: "Education",
-      description: "Ensuring quality education in villages through better schools, resources, and skill-based learning opportunities.",
-      icon: BookOpen,
-    },
-    {
-      title: "Environmental/Climate Change/Eco Restoration",
-      description: "Engaging marginalized and vulnerable groups in eco-restoration and climate action.",
-      icon: Sprout,
-    },
-    {
-      title: "Health & Sanitization",
-      description: "Promoting community well-being through WASH – Water, Sanitation & Hygiene.",
-      icon: Droplet,
-    },
-    {
-      title: "Empowerment/Upliftment",
-      description: "Through empowerment and upliftment, we aim to break cycles of poverty and enable communities to thrive.",
-      icon: UserCheck,
-    },
-    {
-      title: "Disaster Management/Risk Reduction(DRR)",
-      description: "Empowering women and youth in disaster risk reduction through grassroots leadership and preparedness.",
-      icon: Shield,
-    },
-    {
-      title: "Urban Governance",
-      description: "Promoting inclusive urban governance through participation, better services, and community empowerment.",
-      icon: Building,
-    },
-    {
-      title: "Solid & Liquid Waste Management",
-      description: "Safe and sustainable waste management reduces pollution, encourages recycling, and protects community health and the environment.",
-      icon: Recycle,
-    },
-    {
-      title: "Livelihood & Enterprise Development",
-      description: "Enhancing livelihoods through agrovest ventures and traditional occupational trades.",
-      icon: Store,
-    },
-  ]
+  const programs = [
+  {
+    title: "Women Empowerment & Sustainable Livelihoods",
+    location: "Keonjhar",
+    image: "/images/women.png",
+    category: "Women Empowerment",
+    desc: "Formation and nurturin of Self-Help Groups (SHGs) and Women-led Producer Companies.",
+  },
+  {
+    title: "Skill Development & Entrepreneurship",
+    location: "Bhubaneswar",
+    image: "/images/skill.jpg",
+    category: "Skill",
+    desc: "Market-relevant vocational training ,Entrepreneurship development programs,Successful job placement support",
+  },
+  {
+    title: "Health, Nutrition & Hygiene",
+    location: "Bhubaneswar",
+    image: "/images/health1.png",
+    category: "Health",
+    desc: "Community health awareness, mobile health camps, menstrual hygiene management, nutrition support & kitchen garden initiatives,Waste-to-Wealth programs",
+  },
+  {
+    title: "Education & Youth Development",
+    location: "Nayagarh",
+    image: "/images/Education1.jpeg",
+    category: "Youth Development",
+    desc: "Support to underprivileged children,Digital literacy for youth and women",
+  },
+  {
+    title: "Environment & Climate Action",
+    location: "Bhubaneswar",
+    image: "/images/craft.jpg",
+    category: "Livelihood",
+    desc: "Massive tree plantations,Cleanliness drives & waste management,Climate-resilient livelihood models",
+  },
+  {
+    title: "Institutional Building",
+    location: "Bhubaneswar",
+    image: "/images/community1.jpeg",
+    category: "Community Support",
+    desc: "Strengthening community institutions,Convergence with government schemes (NABARD, MSME, TRIFED, ORMAS, PM Vishwakarma, etc.)",
+  },
+];
 
   return (
     <div className="min-h-screen">
@@ -338,7 +149,106 @@ export default function ProgramsPage() {
 
 </section>
 
+{/* ================= PROGRAMS SECTION ================= */}
 
+<section className="relative py-15 bg-[#F8FAFC] overflow-hidden">
+
+  {/* Background Blur */}
+  <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#0B5D4D]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+  <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#144D7A]/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+
+  <div className="relative z-10 max-w-[1320px] mx-auto px-6">
+
+ <div className="text-center mb-16">
+
+  {/* Small Tag */}
+  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B5D4D]/10 border border-[#0B5D4D]/20 mb-4">
+    <div className="w-2 h-2 rounded-full bg-[#0B5D4D]" />
+    <span className="text-[#0B5D4D] font-semibold tracking-wide text-xs uppercase">
+      Our Initiatives
+    </span>
+  </div>
+
+  {/* Main Heading */}
+  <h2 className="text-3xl md:text-4xl lg:text-[42px] font-bold text-[#111827] leading-tight">
+    Transforming Lives Through
+    <span className="block mt-1 text-transparent bg-clip-text bg-gradient-to-r from-[#0B5D4D] to-[#144D7A]">
+      Programs & Projects
+    </span>
+  </h2>
+
+  {/* Divider */}
+  <div className="flex justify-center mt-4 mb-4">
+    <div className="w-16 h-[3px] rounded-full bg-gradient-to-r from-[#0B5D4D] to-[#144D7A]" />
+  </div>
+
+  {/* Description */}
+  <p className="max-w-2xl mx-auto text-base md:text-lg text-gray-600 leading-relaxed">
+    Creating sustainable impact through women empowerment,
+    livelihood generation, healthcare, education and
+    community development initiatives.
+  </p>
+
+</div>
+
+    {/* Cards */}
+    <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+
+      {programs.map((item, index) => (
+        <div
+          key={index}
+          className="group bg-white rounded-[28px] overflow-hidden border border-gray-200 hover:border-[#0B5D4D]/20 hover:shadow-[0_20px_60px_rgba(0,0,0,0.12)] transition-all duration-500 hover:-translate-y-2"
+        >
+
+          {/* Image */}
+          <div className="relative h-[260px] overflow-hidden">
+
+            <Image
+              src={item.image}
+              alt={item.title}
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+
+            <span className="absolute top-5 left-5 px-4 py-2 bg-white/95 backdrop-blur-md rounded-full text-sm font-semibold text-[#0B5D4D]">
+              {item.category}
+            </span>
+
+          </div>
+
+          {/* Content */}
+          <div className="p-7">
+
+            <h3 className="text-[26px] font-bold text-[#111827] leading-tight mb-4 group-hover:text-[#0B5D4D] transition">
+              {item.title}
+            </h3>
+
+            <div className="flex items-center gap-2 text-[#D62828] font-medium mb-4">
+              <MapPin size={16} />
+              <span>{item.location}</span>
+            </div>
+
+            <p className="text-gray-600 leading-relaxed min-h-[96px]">
+              {item.desc}
+            </p>
+
+            <button className="mt-7 inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#0B5D4D] text-[#0B5D4D] font-semibold hover:bg-[#0B5D4D] hover:text-white transition-all duration-300">
+              Read More
+              <ArrowRight size={16} />
+            </button>
+
+          </div>
+
+        </div>
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
    
     </div>
   )
