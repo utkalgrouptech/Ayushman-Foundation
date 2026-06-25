@@ -57,7 +57,7 @@ export default function ProgramsPage() {
   {
     title: "Skill Development & Entrepreneurship",
     location: "Bhubaneswar",
-    image: "/images/skill.jpg",
+    image: "/images/img15.jpeg",
     category: "Skill",
     desc: "Market-relevant vocational training ,Entrepreneurship development programs,Successful job placement support",
   },

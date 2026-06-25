@@ -65,27 +65,56 @@ export function Footer() {
             </p>
 
             {/* ================= SOCIAL ================= */}
-            <div className="flex items-center gap-2 mt-5">
+           <div className="flex items-center gap-2 mt-5">
 
-              {[
-                Facebook,
-                Twitter,
-                Instagram,
-                Linkedin,
-              ].map((Icon, index) => (
-                <button
-                  key={index}
-                  className="w-[40px] h-[40px] rounded-full bg-[#f4efe8]
-                  hover:bg-[#08245c] transition-all duration-300
-                  flex items-center justify-center group"
-                >
-                  <Icon
-                    size={17}
-                    className="text-[#08245c] group-hover:text-white transition-all"
-                  />
-                </button>
-              ))}
-            </div>
+  <a
+    href="https://www.facebook.com/ayushmanfoundationngo/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-[40px] h-[40px] rounded-full bg-[#f4efe8]
+    hover:bg-[#08245c] transition-all duration-300
+    flex items-center justify-center group"
+  >
+    <Facebook
+      size={17}
+      className="text-[#08245c] group-hover:text-white transition-all"
+    />
+  </a>
+
+  <button
+    className="w-[40px] h-[40px] rounded-full bg-[#f4efe8]
+    hover:bg-[#08245c] transition-all duration-300
+    flex items-center justify-center group"
+  >
+    <Twitter
+      size={17}
+      className="text-[#08245c] group-hover:text-white transition-all"
+    />
+  </button>
+
+  <button
+    className="w-[40px] h-[40px] rounded-full bg-[#f4efe8]
+    hover:bg-[#08245c] transition-all duration-300
+    flex items-center justify-center group"
+  >
+    <Instagram
+      size={17}
+      className="text-[#08245c] group-hover:text-white transition-all"
+    />
+  </button>
+
+  <button
+    className="w-[40px] h-[40px] rounded-full bg-[#f4efe8]
+    hover:bg-[#08245c] transition-all duration-300
+    flex items-center justify-center group"
+  >
+    <Linkedin
+      size={17}
+      className="text-[#08245c] group-hover:text-white transition-all"
+    />
+  </button>
+
+</div>
           </div>
 
           {/* ================= QUICK LINKS ================= */}

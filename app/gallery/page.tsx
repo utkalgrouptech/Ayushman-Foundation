@@ -11,6 +11,10 @@ const images = [
 "/images/img12.jpeg",
 "/images/img14.jpeg",
 "/images/img15.jpeg",
+"/images/img16.jpeg",
+"/images/img17.jpeg",
+"/images/img18.jpeg",
+"/images/img20.jpeg",
 
   "/images/img1.jpeg",
   "/images/img2.jpeg",

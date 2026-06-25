@@ -920,7 +920,7 @@ export default function HomePage() {
     sub: "training & enterprise support",
     color: "#2457C5",
     bg: "#EEF3FF",
-    image: "/images/skill.jpg",
+    image: "/images/img15.jpeg",
   },
 
   {
