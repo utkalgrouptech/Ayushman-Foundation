@@ -4,6 +4,13 @@ import { useState } from "react";
 import Image from "next/image";
 
 const images = [
+  "/images/img8.jpeg",
+  "/images/img9.jpeg",
+   "/images/img10.jpeg",
+"/images/img11.jpeg",
+"/images/img12.jpeg",
+
+
   "/images/img1.jpeg",
   "/images/img2.jpeg",
   "/images/img3.jpeg",
@@ -11,6 +18,7 @@ const images = [
   "/images/img5.jpeg",
   "/images/img6.jpeg",
   "/images/img7.jpeg",
+  
 ];
 
 export default function GalleryPage() {
@@ -98,9 +106,7 @@ export default function GalleryPage() {
             >
               ✕
             </button>
-
           </div>
-
         </div>
       )}
     </div>

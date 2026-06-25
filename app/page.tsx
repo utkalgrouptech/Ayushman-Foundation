@@ -765,7 +765,7 @@ export default function HomePage() {
     <div className="absolute left-[543px] top-0 z-20">
       <div className="w-[300px] h-[308px] rounded-[22px] overflow-hidden">
         <img
-          src="/images/impact2.png"
+          src="/images/img10.jpeg"
           alt=""
           className="w-full h-full object-cover"
         />
@@ -803,7 +803,7 @@ export default function HomePage() {
     <div className="absolute left-[945px] top-0 z-20">
       <div className="w-[300px] h-[308px] rounded-[22px] overflow-hidden">
         <img
-          src="/images/impcat3.png"
+          src="/images/img9.jpeg"
           alt=""
           className="w-full h-full object-cover"
         />
