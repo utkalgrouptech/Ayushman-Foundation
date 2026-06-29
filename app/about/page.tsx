@@ -517,7 +517,7 @@ const leadership = [
           <div className="relative w-[180px] h-[240px] bg-white rounded-xl shadow-lg border overflow-hidden group">
 
             <Image
-              src="/images/profilepage.jpg"
+              src="/images/Ayushman_profile_final_page-1.jpg"
               alt="Ayushman Foundation Profile"
               fill
               className="object-cover group-hover:scale-105 transition duration-500"
@@ -553,7 +553,7 @@ const leadership = [
 
             {/* View Button */}
             <a
-              href="/images/Ayushman_foundation_Profile.pdf"
+              href="/images/Ayushman_Profile_final.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#0B5D4D] text-white text-sm font-medium hover:scale-105 transition duration-300"
@@ -563,7 +563,7 @@ const leadership = [
 
             {/* Download Button */}
             <a
-              href="/images/Ayushman_foundation_Profile.pdf"
+              href="/images/Ayushman_Profile_final.pdf"
               download
               className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-[#0B5D4D] text-[#0B5D4D] text-sm font-medium hover:bg-[#0B5D4D] hover:text-white transition duration-300"
             >

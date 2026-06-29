@@ -21,7 +21,7 @@ export function Navigation() {
         label: "Annual Report",
       },
       {
-        href: "/company-profile",
+        href: "/images/Ayushman_Profile_final.pdf",
         label: "Profile",
       },
     ],

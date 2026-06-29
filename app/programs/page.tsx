@@ -78,7 +78,7 @@ export default function ProgramsPage() {
   {
     title: "Environment & Climate Action",
     location: "Odisha",
-    image: "/images/craft.jpg",
+    image: "/images/cleanodisha.jpeg",
     category: "Livelihood",
     desc: "Massive tree plantations,Cleanliness drives & waste management,Climate-resilient livelihood models",
   },
@@ -88,6 +88,13 @@ export default function ProgramsPage() {
     image: "/images/community1.jpeg",
     category: "Community Support",
     desc: "Strengthening community institutions,Convergence with government schemes (NABARD, MSME, TRIFED, ORMAS, PM Vishwakarma, etc.)",
+  },
+   {
+    title: "Ayushman Pathsala",
+    location: "Bhubaneswar",
+    image: "/images/Ayushman_Pathshala_compressed_page-0001.jpg",
+    category: "Education Initiative",
+    desc: "Empowering children and youth through quality education, digital learning, personality development, career mentoring, and skill enhancement to create confident and self-reliant future leaders.",
   },
 ];
 
