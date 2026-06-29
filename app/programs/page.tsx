@@ -56,7 +56,7 @@ export default function ProgramsPage() {
   },
   {
     title: "Skill Development & Entrepreneurship",
-    location: "Bhubaneswar",
+    location: "Nayagarh",
     image: "/images/img15.jpeg",
     category: "Skill",
     desc: "Market-relevant vocational training ,Entrepreneurship development programs,Successful job placement support",
@@ -77,7 +77,7 @@ export default function ProgramsPage() {
   },
   {
     title: "Environment & Climate Action",
-    location: "Bhubaneswar",
+    location: "Odisha",
     image: "/images/craft.jpg",
     category: "Livelihood",
     desc: "Massive tree plantations,Cleanliness drives & waste management,Climate-resilient livelihood models",
