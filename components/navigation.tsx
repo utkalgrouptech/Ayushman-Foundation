@@ -23,6 +23,7 @@ export function Navigation() {
       {
         href: "/images/Ayushman_Profile_final.pdf",
         label: "Profile",
+          external: true,
       },
     ],
   },
